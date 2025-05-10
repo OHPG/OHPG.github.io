@@ -1,0 +1,9 @@
+/* 覆盖默认主题样式 */
+.wrapper {
+  width: 100% !important;
+  max-width: 1200px !important;
+  margin: 0 auto !important;  /* 修改：添加 auto 实现水平居中 */
+  padding: 0 !important;
+  box-sizing: border-box !important;  /* 添加：确保padding计入宽度 */
+}
+
