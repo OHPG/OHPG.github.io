@@ -1,0 +1,23 @@
+title: OHPG Portfolio
+description: Personal portfolio website
+theme: minima
+# 导航配置
+header_pages:
+  - index.md
+  - projects.md
+  - about.md
+# 添加自定义变量
+author: OHPG
+github_username: OHPG
+
+# 启用 Sass 处理
+sass:
+  style: compressed
+
+# 禁用默认社交链接
+minima:
+  social_links:
+    github: OHPG
+
+# 禁用日期显示
+show_excerpts: false

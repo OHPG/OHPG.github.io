@@ -1,0 +1,225 @@
+- name: FinVideo
+  github_url: https://github.com/OHPG/FinVideo
+  calendar: 2025
+  demo_url: "#"
+  tags:
+    - 鸿蒙
+    - Electron
+    - 视频处理
+  description: FinVideo 是一款智能视频搜索和管理工具，支持多平台聚合搜索，让视频资源管理更轻松。 通过先进的算法和用户友好的界面，帮助用户快速找到并管理他们喜爱的视频内容。
+  features:
+    - 多平台聚合搜索
+    - 智能分类管理
+    - 离线播放支持
+  preview_type: devices
+  devices:
+    - type: mobile
+      name: 移动端
+      icon: smartphone-line
+      previews:
+        - image: assets/statics/FinVideo/Market/FinVideo1.jpg
+          title: 首页展示
+          description: 清晰的布局展示最新和推荐内容
+        - image: assets/statics/FinVideo/Market/FinVideo2.jpg
+          title: 搜索功能
+          description: 强大的搜索引擎，快速定位目标内容
+        - image: assets/statics/FinVideo/Market/FinVideo3.jpg
+          title: 视频播放
+          description: 流畅的播放体验，支持多种播放模式
+        - image: assets/statics/FinVideo/Market/FinVideo4.jpg
+          title: 视频播放
+          description: 流畅的播放体验，支持多种播放模式
+        - image: assets/statics/FinVideo/Market/FinVideo5.jpg
+          title: 视频播放
+          description: 流畅的播放体验，支持多种播放模式
+    - type: tablet
+      name: 平板端
+      icon: tablet-line
+      previews:
+        - image: assets/statics/FinVideo/Market/FinVideo4.jpg
+          title: 首页展示
+          description: 优化的平板布局，展示更多内容
+        - image: assets/statics/FinVideo/Market/FinVideo5.jpg
+          title: 搜索功能
+          description: 大屏搜索体验，结果展示更清晰
+        - image: assets/statics/FinVideo/Market/FinVideo6.jpg
+          title: 视频播放
+          description: 大屏观看体验，支持画中画模式
+    - type: desktop
+      name: 桌面端
+      icon: computer-line
+      previews:
+        - image: assets/statics/FinVideo/Market/FinVideo1.jpg
+          title: 首页展示
+          description: 专业的桌面端布局，功能一目了然
+        - image: assets/statics/FinVideo/Market/FinVideo2.jpg
+          title: 搜索功能
+          description: 强大的筛选和排序功能
+        - image: assets/statics/FinVideo/Market/FinVideo3.jpg
+          title: 视频播放
+          description: 专业的播放器功能，支持快捷键操作
+
+- name: FinMusic
+  github_url: https://github.com/OHPG/FinMusic
+  calendar: 2024
+  demo_url: "#"
+  tags:
+    - Vue.js
+    - TypeScript
+    - 音乐播放
+  description: FinMusic 是一款现代化的音乐播放器，支持多平台音源聚合，提供个性化推荐和智能歌单管理。通过优雅的界面设计和强大的音频处理功能，为用户带来极致的音乐体验。
+  features:
+    - 多平台音源聚合
+    - 智能歌单管理
+    - 高品质音频支持
+  preview_type: devices
+  devices:
+    - type: mobile
+      name: 移动端
+      icon: smartphone-line
+      previews:
+        - image: assets/statics/FinMusic/Market/FinMusic1.jpg
+          title: 首页推荐
+          description: 个性化音乐推荐，发现你的音乐品味
+        - image: assets/statics/FinMusic/Market/FinMusic2.jpg
+          title: 播放界面
+          description: 沉浸式播放体验，支持歌词同步显示
+        - image: assets/statics/FinMusic/Market/FinMusic3.jpg
+          title: 歌单管理
+          description: 智能歌单分类，轻松管理音乐收藏
+    - type: tablet
+      name: 平板端
+      icon: tablet-line
+      previews:
+        - image: assets/statics/FinMusic/Market/FinMusic4.jpg
+          title: 平板首��
+          description: 优化的大屏布局，展示更丰富的音乐内容
+        - image: assets/statics/FinMusic/Market/FinMusic5.jpg
+          title: 发现音乐
+          description: 可视化音乐发现，探索更多优质内容
+        - image: assets/statics/FinMusic/Market/FinMusic6.jpg
+          title: 歌词显示
+          description: 大屏歌词展示，支持双语歌词
+    - type: desktop
+      name: 桌面端
+      icon: computer-line
+      previews:
+        - image: assets/statics/FinMusic/Market/FinMusic7.jpg
+          title: 主界面
+          description: 专业的音乐管理界面，功能一目了然
+        - image: assets/statics/FinMusic/Market/FinMusic8.jpg
+          title: 均衡器
+          description: 专业的音效调节，打造完美音质
+        - image: assets/statics/FinMusic/Market/FinMusic9.jpg
+          title: 音乐库
+          description: 强大的音乐库管理，支持智能分类
+
+- name: FinBook
+  github_url: https://github.com/OHPG/FinBook
+  calendar: 2024
+  demo_url: "#"
+  tags:
+    - Vue.js
+    - Electron
+    - 阅读器
+  description: FinBook 是一款现代化的电子书阅读器，支持多种电子书格式，提供智能排版和个性化阅读体验。通过优雅的界面设计和强大的阅读功能，让阅读变得更加轻松愉悦。
+  features:
+    - 多格式支持
+    - 智能排版
+    - 云端同步
+  preview_type: devices
+  devices:
+    - type: mobile
+      name: 移动端
+      icon: smartphone-line
+      previews:
+        - image: assets/statics/FinBook/Market/FinBook1.jpg
+          title: 书架展示
+          description: 清晰的书籍管理，支持智能分类
+        - image: assets/statics/FinBook/Market/FinBook2.jpg
+          title: 阅读界面
+          description: 沉浸式阅读体验，支持多种排版模式
+        - image: assets/statics/FinBook/Market/FinBook3.jpg
+          title: 笔记管理
+          description: 便捷的笔记和标注功能，支持云端同步
+    - type: tablet
+      name: 平板端
+      icon: tablet-line
+      previews:
+        - image: assets/statics/FinBook/Market/FinBook4.jpg
+          title: 平板书架
+          description: 优化的大屏布局，展示更多书籍内容
+        - image: assets/statics/FinBook/Market/FinBook5.jpg
+          title: 阅读设置
+          description: 丰富的阅读设置，打造个性化体验
+        - image: assets/statics/FinBook/Market/FinBook6.jpg
+          title: 目录导航
+          description: 清晰的章节导航，快速定位阅读位置
+    - type: desktop
+      name: 桌面端
+      icon: computer-line
+      previews:
+        - image: assets/statics/FinBook/Market/FinBook7.jpg
+          title: 主界面
+          description: 专业的图书管理界面，功能一目了然
+        - image: assets/statics/FinBook/Market/FinBook8.jpg
+          title: 阅读模式
+          description: 多种阅读模式切换，适应不同场景
+        - image: assets/statics/FinBook/Market/FinBook9.jpg
+          title: 书籍信息
+          description: 详细的图书信息管理，支持自定义标签
+
+- name: FinAdmin
+  github_url: https://github.com/OHPG/FinAdmin
+  calendar: 2024
+  demo_url: "#"
+  tags:
+    - Vue.js
+    - TypeScript
+    - 后台管理
+  description: FinAdmin 是一款现代化的后台管理系统框架，采用最新的前端技术栈，提供丰富的组件和完善的权限管理。通过模块化设计和灵活的配置，快速构建企业级管理系统。
+  features:
+    - 组件化设计
+    - 权限管理
+    - 主题定制
+  preview_type: devices
+  devices:
+    - type: mobile
+      name: 移动端
+      icon: smartphone-line
+      previews:
+        - image: assets/statics/FinAdmin/Market/FinAdmin1.jpg
+          title: 移动仪表盘
+          description: 响应式数据展示，重要信息一目了然
+        - image: assets/statics/FinAdmin/Market/FinAdmin2.jpg
+          title: 列表管理
+          description: 移动端优化的列表视图，操作便捷
+        - image: assets/statics/FinAdmin/Market/FinAdmin3.jpg
+          title: 表单设计
+          description: 智能表单布局，完美适配小屏设备
+    - type: tablet
+      name: 平板端
+      icon: tablet-line
+      previews:
+        - image: assets/statics/FinAdmin/Market/FinAdmin4.jpg
+          title: 数据分析
+          description: 大屏数据可视化，支持多维度分析
+        - image: assets/statics/FinAdmin/Market/FinAdmin5.jpg
+          title: 系统配置
+          description: 直观的配置界面，轻松管理系统设置
+        - image: assets/statics/FinAdmin/Market/FinAdmin6.jpg
+          title: 权限管理
+          description: 完善的权限控制，角色分配一键完成
+    - type: desktop
+      name: 桌面端
+      icon: computer-line
+      previews:
+        - image: assets/statics/FinAdmin/Market/FinAdmin7.jpg
+          title: 工作台
+          description: 专业的管理工作台，多维度数据展示
+        - image: assets/statics/FinAdmin/Market/FinAdmin8.jpg
+          title: 高级表格
+          description: 强大的表格功能，支持自定义列展示
+        - image: assets/statics/FinAdmin/Market/FinAdmin9.jpg
+          title: 系统监控
+          description: 实时系统监控，性能分析一目了然
