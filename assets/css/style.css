@@ -14,41 +14,46 @@ body {
     background: var(--bg);
     color: var(--text);
     font-family: 'Inter', sans-serif;
-  line-height: 1.6;
-    margin: 0;
+    line-height: 1.6;
+    margin: 2rem;
 }
 
 .container {
-  max-width: var(--max-width);
-  margin: 0 auto;
+    max-width: var(--max-width);
+    margin: 0 auto;
     padding: 2rem;
 }
 
 /* 导航栏样式 */
 .nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1.5rem 0;
+    display: flex;
+    justify-content: center;
+    /* 水平居中 */
+    align-items: center;
+    padding: 2rem 0;
+    /* 增加上下间距 */
 }
 
 .logo {
-    font-size: 1.8rem;
-  font-weight: 700;
+    font-size: 5.5rem;
+    /* 放大字体 */
+    font-weight: 700;
     background: var(--gradient);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: 2px;
+    /* 增加字间距 */
 }
 
 .nav-links {
-  display: flex;
+    display: flex;
     gap: 2rem;
 }
 
 .nav-links a {
     color: var(--text);
     text-decoration: none;
-  font-weight: 500;
+    font-weight: 500;
     transition: color 0.3s ease;
 }
 
@@ -60,8 +65,8 @@ body {
 .hero {
     background: linear-gradient(135deg, rgba(59, 244, 251, 0.1) 0%, rgba(50, 255, 165, 0.1) 100%);
     padding: 4rem 0;
-    min-height: 40vh;
-  display: flex;
+    min-height: 80vh;
+    display: flex;
     align-items: center;
 }
 
@@ -86,8 +91,91 @@ body {
 
 .subtitle {
     font-size: 1.25rem;
-  color: #a0aec0;
+    color: #a0aec0;
     margin-bottom: 2.5rem;
+}
+
+/* CTA 按钮容器 */
+.hero-cta {
+    margin-top: 2.5rem;
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+}
+
+/* 按钮基础样式 */
+.cta-button {
+    position: relative;
+    padding: 0.8rem 2rem;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: hidden;
+}
+
+/* 主按钮样式 */
+.cta-button:not(.secondary) {
+    background: var(--gradient);
+    color: var(--bg);
+    box-shadow: 0 4px 15px rgba(59, 244, 251, 0.3);
+}
+
+/* 次要按钮样式 */
+.cta-button.secondary {
+    background: transparent;
+    color: var(--text);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+}
+
+/* 悬停效果 */
+.cta-button:not(.secondary):hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(59, 244, 251, 0.4);
+}
+
+.cta-button.secondary:hover {
+    transform: translateY(-3px);
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(59, 244, 251, 0.3);
+}
+
+/* 添加波纹效果 */
+.cta-button::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, transparent 50%);
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0;
+    transition: transform 0.6s ease, opacity 0.6s ease;
+}
+
+.cta-button:hover::after {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+}
+
+/* 添加光效 */
+.cta-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.cta-button:hover::before {
+    opacity: 1;
 }
 
 /* 项目展示区域样式 */
@@ -108,24 +196,24 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-        gap: 1rem;
-    }
-    
-    .project-title {
-      font-size: 3.5rem;
-      background: var(--gradient);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      margin-bottom: 1rem;
+    gap: 1rem;
+}
+
+.project-title {
+    font-size: 3.5rem;
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 1rem;
 }
 
 .project-meta {
     display: flex;
-    justify-content: center;
+        justify-content: center;
     gap: 1.5rem;
     margin-bottom: 2rem;
     color: var(--text);
-}
+    }
 
 .meta-item {
     display: flex;
@@ -191,7 +279,7 @@ body {
     position: relative;
     background: rgba(0, 0, 0, 0.2);
     border-radius: 12px;
-    }
+}
 
 /* 滑动背景指示器 */
 .devices-tabs::before {
@@ -199,7 +287,8 @@ body {
     position: absolute;
     top: 0.5rem;
     left: 0.5rem;
-    width: calc(33.33% - 1.33rem); /* 调整宽度计算 */
+    width: calc(33.33% - 1.33rem);
+    /* 调整宽度计算 */
     height: calc(100% - 1rem);
     background: rgba(59, 244, 251, 0.1);
     border-radius: 8px;
@@ -271,6 +360,7 @@ body {
         transform: translate(-50%, -50%) scale(0);
         opacity: 1;
     }
+
     100% {
         transform: translate(-50%, -50%) scale(2);
         opacity: 0;
@@ -280,16 +370,19 @@ body {
 /* 预览区域 */
 .device-preview {
     display: grid;
-    grid-template-columns: 2fr 1fr; /* 修改比例为 2:1 */
+    grid-template-columns: 2fr 1fr;
+    /* 修改比例为 2:1 */
     gap: 2rem;
     align-items: start;
 }
 
 .preview-images {
     position: relative;
-    width: 300px; /* 保持图片容器宽度不变 */
+    width: 300px;
+    /* 保持图片容器宽度不变 */
     height: 600px;
-    margin: 0 auto; /* 在更大的空间内居中 */
+    margin: 0 auto;
+    /* 在更大的空间内居中 */
     background: linear-gradient(135deg, #4299e1, #3bf4fb);
     border-radius: 12px;
     overflow: hidden;
@@ -339,11 +432,25 @@ body {
 }
 
 /* 为每个指示器添加不同的初始角度 */
-.indicator:nth-child(1) { transform: rotateY(35deg) translateZ(0); }
-.indicator:nth-child(2) { transform: rotateY(30deg) translateZ(0); }
-.indicator:nth-child(3) { transform: rotateY(25deg) translateZ(0); }
-.indicator:nth-child(4) { transform: rotateY(20deg) translateZ(0); }
-.indicator:nth-child(5) { transform: rotateY(15deg) translateZ(0); }
+.indicator:nth-child(1) {
+    transform: rotateY(35deg) translateZ(0);
+}
+
+.indicator:nth-child(2) {
+    transform: rotateY(30deg) translateZ(0);
+}
+
+.indicator:nth-child(3) {
+    transform: rotateY(25deg) translateZ(0);
+}
+
+.indicator:nth-child(4) {
+    transform: rotateY(20deg) translateZ(0);
+}
+
+.indicator:nth-child(5) {
+    transform: rotateY(15deg) translateZ(0);
+}
 
 /* 指示器内容样式 */
 .indicator h3 {
@@ -373,13 +480,13 @@ body {
 
 /* 添加阴影效果 */
 .indicator {
-    box-shadow: 
+    box-shadow:
         -5px 5px 15px rgba(0, 0, 0, 0.1),
         inset 1px 1px 1px rgba(255, 255, 255, 0.05);
 }
 
 .indicator.active {
-    box-shadow: 
+    box-shadow:
         -10px 10px 20px rgba(0, 0, 0, 0.2),
         inset 1px 1px 1px rgba(255, 255, 255, 0.1);
 }
@@ -387,7 +494,8 @@ body {
 /* 设备预览区域样式更新 */
 .devices-content {
     position: relative;
-    min-height: 600px; /* 设置固定高度，防止跳变 */
+    min-height: 600px;
+    /* 设置固定高度，防止跳变 */
 }
 
 .device-view {
@@ -500,7 +608,7 @@ body {
 /* 添加悬停效果 */
 .preview-images:hover {
     transform: perspective(1000px) rotateY(-15deg) rotateX(5deg) translateY(-5px);
-    box-shadow: 
+    box-shadow:
         25px 25px 40px rgba(0, 0, 0, 0.3),
         inset -5px -5px 15px rgba(255, 255, 255, 0.1),
         inset 5px 5px 15px rgba(0, 0, 0, 0.1);
@@ -518,11 +626,9 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(
-        45deg,
-        rgba(255, 255, 255, 0.1) 0%,
-        rgba(255, 255, 255, 0) 100%
-    );
+    background: linear-gradient(45deg,
+            rgba(255, 255, 255, 0.1) 0%,
+            rgba(255, 255, 255, 0) 100%);
     opacity: 0;
     transition: opacity 0.5s ease;
 }
@@ -544,14 +650,12 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(
-        125deg,
-        rgba(255, 255, 255, 0) 0%,
-        rgba(255, 255, 255, 0.05) 25%,
-        rgba(255, 255, 255, 0.1) 50%,
-        rgba(255, 255, 255, 0.05) 75%,
-        rgba(255, 255, 255, 0) 100%
-    );
+    background: linear-gradient(125deg,
+            rgba(255, 255, 255, 0) 0%,
+            rgba(255, 255, 255, 0.05) 25%,
+            rgba(255, 255, 255, 0.1) 50%,
+            rgba(255, 255, 255, 0.05) 75%,
+            rgba(255, 255, 255, 0) 100%);
     transform: translateZ(1px);
     pointer-events: none;
     opacity: 0;
@@ -570,11 +674,9 @@ body {
     height: 100%;
     bottom: -100px;
     left: 0;
-    background: radial-gradient(
-        ellipse at center,
-        rgba(0, 0, 0, 0.35) 0%,
-        rgba(0, 0, 0, 0) 80%
-    );
+    background: radial-gradient(ellipse at center,
+            rgba(0, 0, 0, 0.35) 0%,
+            rgba(0, 0, 0, 0) 80%);
     transform-origin: center center;
     transform: scale(0.85) translateZ(-50px);
     opacity: 0;
@@ -599,16 +701,19 @@ body {
 
 /* 项目列表样式 */
 .project-list {
-    margin: 1rem -2rem 0;
+    margin: 3rem -2rem 0;
     position: relative;
+}
+.project-list::after {
+    display: none; /* 完全移除遮罩 */
 }
 
 .project-scroll {
     display: flex;
-    gap: 1.5rem;
+    gap: 3rem; /* 增加项目间距 */
     padding: 1rem 2rem;
     overflow-x: auto;
-    scroll-snap-type: x mandatory;
+    /* scroll-snap-type: x mandatory; */
     scrollbar-width: none;
     -ms-overflow-style: none;
 }
@@ -618,17 +723,24 @@ body {
 }
 
 .project-logo-card {
-    flex: 0 0 auto;
+    flex: 0 0 200px; /* 固定宽度，不压缩 */
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 0.5rem;
-    padding: 1rem;
-    width: 100px;
+    gap: 1rem;
+    padding: 1.5rem;
     text-decoration: none;
     transition: all 0.3s ease;
     border-radius: 12px;
     scroll-snap-align: start;
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.project-logo {
+    width: 64px; /* 增大图标尺寸 */
+    height: 64px;
+    border-radius: 12px;
+    transition: transform 0.3s ease;
 }
 
 .project-logo-card:hover {
@@ -636,19 +748,12 @@ body {
     transform: translateY(-5px);
 }
 
-.project-logo {
-    width: 120px;
-    height: 120px;
-    border-radius: 10px;
-    transition: transform 0.3s ease;
-}
-
 .project-logo-card:hover .project-logo {
     transform: scale(1.1);
 }
 
 .project-name {
-    font-size: 0.8rem;
+    font-size: 1rem; /* 增大字体 */
     color: var(--text);
     opacity: 0.8;
     text-align: center;
@@ -673,9 +778,138 @@ body {
     .project-logo-card {
         width: 80px;
     }
-    
+
     .project-logo {
         width: 32px;
         height: 32px;
+    }
+
+    .logo {
+        font-size: 2.5rem;
+    }
+}
+
+/* 页脚样式 */
+.site-footer {
+    padding: 1rem 0;
+    background: var(--bg);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    margin-top: 4rem;
+}
+
+/* 页脚样式优化 */
+.site-footer {
+    padding: 12px 0;
+    /* 减小内边距 */
+    background: var(--bg);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-content {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    height: 32px;
+    /* 设置合适的高度 */
+}
+
+.copyright,
+.beian {
+    font-size: 0.85rem;
+    color: var(--text);
+    opacity: 0.6;
+}
+
+.beian a {
+    color: inherit;
+    text-decoration: none;
+    transition: opacity 0.3s ease;
+}
+
+.beian a:hover {
+    opacity: 1;
+}
+
+display: flex;
+flex-direction: column;
+align-items: center;
+gap: 0.5rem;
+text-align: center;
+}
+
+.copyright {
+    color: var(--text);
+    opacity: 0.6;
+    font-size: 0.9rem;
+}
+
+.beian {
+    font-size: 0.9rem;
+}
+
+.beian a {
+    color: var(--text);
+    opacity: 0.6;
+    text-decoration: none;
+    transition: opacity 0.3s ease;
+}
+
+.beian a:hover {
+    opacity: 1;
+}
+
+/* 响应式调整 */
+@media (min-width: 768px) {
+    .footer-content {
+        flex-direction: row;
+        justify-content: center;
+        gap: 2rem;
+    }
+}
+
+/* GitHub 角标样式 */
+.github-corner {
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 1000;
+}
+
+.github-corner:hover .octo-arm {
+    animation: octocat-wave 560ms ease-in-out;
+}
+
+.github-corner svg {
+    filter: drop-shadow(0 0 8px rgba(59, 244, 251, 0.4));
+    transition: all 0.3s ease;
+}
+
+.github-corner:hover svg {
+    filter: drop-shadow(0 0 12px rgba(59, 244, 251, 0.6));
+}
+
+@keyframes octocat-wave {
+    0%, 100% { transform: rotate(0); }
+    20%, 60% { transform: rotate(-25deg); }
+    40%, 80% { transform: rotate(10deg); }
+}
+
+/* 移动端优化 */
+@media (max-width: 500px) {
+    .github-corner:hover .octo-arm {
+        animation: none;
+    }
+    
+    .github-corner .octo-arm {
+        animation: octocat-wave 560ms ease-in-out;
+    }
+    
+    .github-corner svg {
+        width: 60px;
+        height: 60px;
     }
 }

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="{{ page.lang | default: site.lang | default: "en" }}">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {%- seo -%}
+    <link rel="stylesheet" href="{{ "../assets/css/style.css" | relative_url }}">
+  </head>
+  <body>
+    <main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        {{ content }}
+      </div>
+    </main>
+
+    <!-- 添加页脚 -->
+    <footer class="site-footer">
+      <div class="footer-content">
+        <span class="copyright">
+            © {{ site.time | date: '%Y' }} {{ site.title | default: "OHPG" }}. All rights reserved.
+        </span>
+        <span class="beian">
+          <a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener">豫ICP备2025110731号-1</a>
+        </span>
+      </div>
+    </footer>
+  </body>
+</html>

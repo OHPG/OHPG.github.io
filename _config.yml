@@ -18,6 +18,14 @@ sass:
 minima:
   social_links:
     github: OHPG
+  # 禁用标题显示
+  header_pages: []
 
 # 禁用日期显示
 show_excerpts: false
+
+# 禁用默认标题
+hide_title: true
+
+# 使用自定义布局
+layouts_dir: _layouts

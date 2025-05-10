@@ -2,22 +2,22 @@ title: 项目汇总
 description: 创新技术，优质体验
 
 projects:
-  - name: FindVideo
+  - name: FinVideo
     icon: assets/statics/FinVideo/Market/video_logo.png
     description: 智能视频搜索和管理工具
-    link: "#findvideo"
+    link: "#FinVideo"
     
   - name: FinMusic
     icon: assets/statics/FinMusic/Market/music_logo.png
     description: 现代化音乐播放器
-    link: "#finmusic"
+    link: "#FinMusic"
     
   - name: FinBook
     icon: assets/statics/FinBook/Market/book_logo.png
     description: 电子书阅读器
-    link: "#finbook"
+    link: "#FinBook"
     
   - name: FinAdmin
     icon: assets/statics/FinAdmin/Market/admin_logo.png
     description: 后台管理系统框架
-    link: "#finadmin"
+    link: "#FinAdmin"
