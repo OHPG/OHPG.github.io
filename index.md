@@ -2,6 +2,7 @@
 layout: default
 hide_title: true
 ---
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
 <!-- 在文件顶部添加样式链接 -->
 <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
 <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
@@ -13,9 +14,18 @@ hide_title: true
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+<canvas id="bgCanvas" class="background-canvas"></canvas>
 
 <!-- Hero Section -->
 <div class="hero">
+      <!-- GitHub Corner -->
+<a href="https://github.com/OHPG" class="github-corner" aria-label="View on GitHub">
+  <svg width="80" height="80" viewBox="0 0 250 250" style="fill:var(--primary); color:#000; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true">
+    <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+    <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+    <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path>
+  </svg>
+</a>
   <div class="container">
     <nav class="nav">
       <div class="logo">OHPG</div>
@@ -25,14 +35,6 @@ hide_title: true
       <h1>创新技术 <span class="highlight">优质体验</span></h1>
       <p class="subtitle">Full Stack Developer | Open Source Enthusiast</p>
       <div class="hero-cta">
-      <!-- GitHub Corner -->
-<a href="https://github.com/OHPG" class="github-corner" aria-label="View on GitHub">
-  <svg width="80" height="80" viewBox="0 0 250 250" style="fill:var(--primary); color:#000; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true">
-    <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
-    <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
-    <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path>
-  </svg>
-</a>
     </div>
   </div>
 
@@ -42,10 +44,10 @@ hide_title: true
       <div class="stat-item">
         <span class="stat-value">{{ stat.value }}</span>
         <span class="stat-label">{{ stat.label }}</span>
-</div>
+        </div>
           {% endfor %}
         </div>
-
+        
     <!-- Project Logo List -->
     <div class="project-list" data-aos="fade-up" data-aos-delay="400">
       <div class="project-scroll">
@@ -54,11 +56,11 @@ hide_title: true
           <img src="{{ project.icon }}" alt="{{ project.name }}" class="project-logo">
           <span class="project-name">{{ project.name }}</span>
             </a>
-                {% endfor %}
-  </div>
+        {% endfor %}
+      </div>
     </div>
   </div>
-  </div>
+    </div>
 
 <!-- Projects Section -->
 <section id="projects" class="projects-section">
@@ -71,17 +73,17 @@ hide_title: true
           <div class="meta-item">
             <i class="ri-github-fill"></i>
             <span>{{ project.github_url | split: '/' | last }}</span>
-    </div>
+  </div>
           <div class="meta-item">
             <i class="ri-calendar-line"></i>
             <span>{{ project.calendar }}</span>
   </div>
-          </div>
+    </div>
         <div class="tag-list">
           {% for tag in project.tags %}
           <span class="tag">{{ tag }}</span>
-          {% endfor %}
-        </div>
+    {% endfor %}
+  </div>
         <p class="project-description">{{ project.description }}</p>
       </header>
 
@@ -226,5 +228,246 @@ hide_title: true
         });
     });
     
+    // 背景动效增强
+    const canvas = document.getElementById('bgCanvas');
+    const ctx = canvas.getContext('2d');
+    
+    // 设置 canvas 尺寸
+    function setCanvasSize() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    setCanvasSize();
+    window.addEventListener('resize', setCanvasSize);
+
+    // 简化的粒子类
+    class Particle {
+      constructor() {
+        this.reset();
+      }
+
+      reset() {
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+        this.size = Math.random() * 2 + 0.5;
+        this.speedX = (Math.random() - 0.5) * 0.5; // 降低速度
+        this.speedY = (Math.random() - 0.5) * 0.5;
+        this.opacity = Math.random() * 0.3 + 0.1; // 降低透明度
+        this.color = this.getRandomColor();
+      }
+
+      getRandomColor() {
+        const colors = [
+          `rgba(59, 244, 251, ${this.opacity})`,
+          `rgba(50, 255, 165, ${this.opacity})`
+        ];
+        return colors[Math.floor(Math.random() * colors.length)];
+      }
+
+      update() {
+        this.x += this.speedX;
+        this.y += this.speedY;
+        
+        // 简化的边界检查
+        if (this.x < 0 || this.x > canvas.width || 
+            this.y < 0 || this.y > canvas.height) {
+          this.reset();
+        }
+      }
+
+      draw() {
+        ctx.beginPath();
+        ctx.fillStyle = this.color;
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    }
+        
+    // 优化的连线函数
+    function drawLines() {
+            ctx.beginPath();
+      for (let i = 0; i < particles.length; i += 2) { // 减少循环次数
+        for (let j = i + 1; j < Math.min(i + 5, particles.length); j++) { // 限制连线数量
+          const dx = particles[i].x - particles[j].x;
+          const dy = particles[i].y - particles[j].y;
+          const distance = dx * dx + dy * dy; // 避免开方运算
+          const maxDistance = 10000; // 150 * 150
+
+          if (distance < maxDistance) {
+            ctx.moveTo(particles[i].x, particles[i].y);
+            ctx.lineTo(particles[j].x, particles[j].y);
+          }
+        }
+      }
+      ctx.strokeStyle = 'rgba(59, 244, 251, 0.03)';
+      ctx.stroke();
+    }
+
+    // 简化的鼠标交互
+    let mouse = {
+      x: null,
+      y: null,
+      radius: 100
+    };
+
+    function handleMouseInteraction() {
+      if (!mouse.x || !mouse.y) return;
+      
+      for (let i = 0; i < particles.length; i += 2) { // 减少循环次数
+        const particle = particles[i];
+        const dx = particle.x - mouse.x;
+        const dy = particle.y - mouse.y;
+        const distance = dx * dx + dy * dy;
+        
+        if (distance < mouse.radius * mouse.radius) {
+          particle.x += dx * 0.02;
+          particle.y += dy * 0.02;
+        }
+      }
+    }
+
+    // 减少粒子数量
+    const particles = [];
+    const particleCount = Math.min(window.innerWidth / 20, 40); // 减少粒子数量
+
+    for (let i = 0; i < particleCount; i++) {
+      particles.push(new Particle());
+    }
+
+    // 优化的动画循环
+    let animationFrameId;
+    let lastTime = 0;
+    const fps = 30; // 限制帧率
+    const fpsInterval = 1000 / fps;
+    function animate(currentTime) {
+      animationFrameId = requestAnimationFrame(animate);
+
+      // 控制帧率
+      const elapsed = currentTime - lastTime;
+      if (elapsed < fpsInterval) return;
+      lastTime = currentTime - (elapsed % fpsInterval);
+
+      // 使用半透明矩形而不是完全清除画布
+      ctx.fillStyle = 'rgba(0, 0, 0, 0.1)';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      
+      // 更新和绘制粒子
+      particles.forEach(particle => {
+        particle.update();
+        particle.draw();
+    });
+
+      // 绘制连线
+      drawLines();
+      
+      // 处理鼠标交互
+      handleMouseInteraction();
+    }
+
+    // 事件监听器
+    canvas.addEventListener('mousemove', function(event) {
+      mouse.x = event.x;
+      mouse.y = event.y;
+    }, { passive: true });
+    canvas.addEventListener('mouseleave', function() {
+      mouse.x = null;
+      mouse.y = null;
+    });
+
+    // 优化的触摸事件
+    canvas.addEventListener('touchmove', function(event) {
+      mouse.x = event.touches[0].clientX;
+      mouse.y = event.touches[0].clientY;
+    }, { passive: true });
+
+    canvas.addEventListener('touchend', function() {
+      mouse.x = null;
+      mouse.y = null;
+    });
+
+    // 页面可见性优化
+    document.addEventListener('visibilitychange', function() {
+      if (document.hidden) {
+        cancelAnimationFrame(animationFrameId);
+      } else {
+        lastTime = 0;
+    animate();
+      }
+    });
+
+    // 开始动画
+    animate();
+
+    // 初始化设备预览
+    function initDevicePreview() {
+      const deviceViews = document.querySelectorAll('.device-view');
+      
+      deviceViews.forEach(deviceView => {
+        const indicators = deviceView.querySelectorAll('.indicator');
+        const totalIndicators = indicators.length;
+        
+        indicators.forEach((indicator, index) => {
+          // 计算弧形分布的角度
+          const arcSpan = 60; // 总弧度范围
+          const startAngle = -arcSpan / 2; // 起始角度
+          const angleStep = arcSpan / (totalIndicators - 1 || 1); // 角度步进
+          const angle = startAngle + (index * angleStep);
+          
+          // 设置transform样式
+          indicator.style.transform = `
+            perspective(1000px) 
+            rotateY(10deg) 
+            translateX(20px)
+            rotate(${angle}deg)
+          `;
+          // 添加点击事件
+        indicator.addEventListener('click', function() {
+          // 移除其他激活状态
+            indicators.forEach(i => {
+              i.classList.remove('active');
+              // 重置非激活状态的transform
+              const idx = Array.from(indicators).indexOf(i);
+              const ang = startAngle + (idx * angleStep);
+              i.style.transform = `
+                perspective(1000px) 
+                rotateY(10deg) 
+                translateX(20px)
+                rotate(${ang}deg)
+              `;
+            });
+            
+            // 添加当前激活状态
+          this.classList.add('active');
+            // 设置激活状态的transform
+            this.style.transform = `
+              perspective(1000px) 
+              rotateY(0deg) 
+              translateX(40px)
+              rotate(${angle}deg)
+            `;
+          
+          // 更新预览图片
+          const previewImages = this.closest('.device-preview')
+            .querySelector('.preview-images');
+          const targetImage = previewImages
+            .querySelector(`[data-index="${this.dataset.index}"]`);
+          
+          if (targetImage) {
+            previewImages.querySelectorAll('.preview-img')
+              .forEach(img => img.classList.remove('active'));
+            targetImage.classList.add('active');
+            
+            // 添加切换动画
+            previewImages.style.animation = 'none';
+            previewImages.offsetHeight; // 触发重绘
+            previewImages.style.animation = 'float 6s ease-in-out infinite';
+          }
+});
+      });
+});
+    }
+
+    // 调用初始化
+    initDevicePreview();
 });
 </script>
