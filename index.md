@@ -404,69 +404,58 @@ hide_title: true
       
       deviceViews.forEach(deviceView => {
         const indicators = deviceView.querySelectorAll('.indicator');
-        const totalIndicators = indicators.length;
         
-        indicators.forEach((indicator, index) => {
-          // 计算弧形分布的角度
-          const arcSpan = 60; // 总弧度范围
-          const startAngle = -arcSpan / 2; // 起始角度
-          const angleStep = arcSpan / (totalIndicators - 1 || 1); // 角度步进
-          const angle = startAngle + (index * angleStep);
-          
-          // 设置transform样式
-          indicator.style.transform = `
-            perspective(1000px) 
-            rotateY(10deg) 
-            translateX(20px)
-            rotate(${angle}deg)
-          `;
-          // 添加点击事件
+        indicators.forEach((indicator) => {
         indicator.addEventListener('click', function() {
-          // 移除其他激活状态
+            // 如果已经是激活状态，则不执行
+            if (this.classList.contains('active')) return;
+            // 移除其他激活状态
             indicators.forEach(i => {
-              i.classList.remove('active');
-              // 重置非激活状态的transform
-              const idx = Array.from(indicators).indexOf(i);
-              const ang = startAngle + (idx * angleStep);
-              i.style.transform = `
-                perspective(1000px) 
-                rotateY(10deg) 
-                translateX(20px)
-                rotate(${ang}deg)
-              `;
+              if (i.classList.contains('active')) {
+                // 添加退出动画
+                i.classList.add('indicator-leave');
+                setTimeout(() => {
+                  i.classList.remove('active', 'indicator-leave');
+                }, 300);
+              }
             });
             
             // 添加当前激活状态
-          this.classList.add('active');
-            // 设置激活状态的transform
-            this.style.transform = `
-              perspective(1000px) 
-              rotateY(0deg) 
-              translateX(40px)
-              rotate(${angle}deg)
-            `;
-          
-          // 更新预览图片
+            this.classList.add('indicator-enter');
+            setTimeout(() => {
+              this.classList.add('active');
+              this.classList.remove('indicator-enter');
+            }, 300);
+            
+            // 更新预览图片
           const previewImages = this.closest('.device-preview')
             .querySelector('.preview-images');
           const targetImage = previewImages
             .querySelector(`[data-index="${this.dataset.index}"]`);
           
           if (targetImage) {
-            previewImages.querySelectorAll('.preview-img')
-              .forEach(img => img.classList.remove('active'));
+              const currentActive = previewImages.querySelector('.preview-img.active');
+              
+              // 添加图片切换动画
+              if (currentActive) {
+                currentActive.style.transition = 'opacity 0.3s ease';
+                currentActive.style.opacity = '0';
+                setTimeout(() => {
+                  currentActive.classList.remove('active');
             targetImage.classList.add('active');
-            
-            // 添加切换动画
-            previewImages.style.animation = 'none';
-            previewImages.offsetHeight; // 触发重绘
-            previewImages.style.animation = 'float 6s ease-in-out infinite';
-          }
-});
-      });
-});
+                  targetImage.style.opacity = '0';
+                  requestAnimationFrame(() => {
+                    targetImage.style.transition = 'opacity 0.3s ease';
+                    targetImage.style.opacity = '1';
+          });
+                }, 300);
     }
-
+            }
+});
+        });
+      });
+    }
+            
     // 调用初始化
     initDevicePreview();
 });
