@@ -4,20 +4,20 @@ description: 创新技术，优质体验
 projects:
   - name: FinVideo
     icon: assets/statics/FinVideo/Market/video_logo.png
-    description: 智能视频搜索和管理工具
+    description: JellyFin视频播放器
     link: "#FinVideo"
     
   - name: FinMusic
     icon: assets/statics/FinMusic/Market/music_logo.png
-    description: 现代化音乐播放器
+    description: JellyFin音乐播放器
     link: "#FinMusic"
     
   - name: FinBook
     icon: assets/statics/FinBook/Market/book_logo.png
-    description: 电子书阅读器
+    description: JellyFin电子阅读器
     link: "#FinBook"
     
   - name: FinAdmin
     icon: assets/statics/FinAdmin/Market/admin_logo.png
-    description: 后台管理系统框架
+    description: JellyFin管理工具
     link: "#FinAdmin"
