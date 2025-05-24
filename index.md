@@ -72,8 +72,19 @@ hide_title: true
         <div class="project-meta">
           <div class="meta-item">
             <i class="ri-github-fill"></i>
-            <span>{{ project.github_url | split: '/' | last }}</span>
+             <a href="{{ project.github_url }}" target="_blank" class="github-link">
+    {{ project.github_url | split: '/' | last }}
+  </a>
   </div>
+      <!-- 添加 demo 链接 -->
+    {% if project.demo_url %}
+    <div class="meta-item">
+      <i class="ri-global-line"></i>
+      <a href="{{ project.demo_url }}" target="_blank" class="demo-link">
+        Release
+      </a>
+    </div>
+    {% endif %}
           <div class="meta-item">
             <i class="ri-calendar-line"></i>
             <span>{{ project.calendar }}</span>
