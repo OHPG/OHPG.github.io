@@ -181,7 +181,7 @@ align-items: center;
 
 /* 项目展示区域样式 */
 .projects-section {
-    padding: 6rem 0;
+    padding: 2rem 0;
     background: var(--bg);
 }
 
@@ -313,7 +313,7 @@ align-items: center;
   
 /* 设备展示区域 */
 .devices-section {
-    margin-top: 6rem;
+    margin-top: 1rem;
     background: var(--dark-card);
     border-radius: 20px;
     padding: 2rem;
@@ -1010,4 +1010,22 @@ text-align: center;
   height: 100%;
   z-index: -1;
   background: var(--bg);
+}
+.github-link {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.github-link:hover {
+  color: var(--primary);
+}
+.demo-link {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.demo-link:hover {
+  color: var(--primary);
 }
