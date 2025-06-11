@@ -6,8 +6,9 @@ hide_title: true
 <!-- 在文件顶部添加样式链接 -->
 <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
 <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
-<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+<link rel="stylesheet" href="{{ '/assets/css/aos.css' | relative_url }}">
+<script src="{{ '/assets/js/aos.js' | relative_url }}"></script>
+
 
 <!-- 在文件顶部添加 -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
