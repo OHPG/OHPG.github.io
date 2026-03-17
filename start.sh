@@ -8,8 +8,10 @@ set -e
 echo "🚀 启动 OHPG.github.io 本地服务器..."
 
 # 确保使用正确的 Ruby 版本
-eval "$(rbenv init - zsh)"
-rbenv shell 3.3.0
+if command -v rbenv &> /dev/null; then
+    eval "$(rbenv init - bash)"
+    rbenv shell 3.3.0
+fi
 
 # 检查依赖是否已安装
 if [ ! -f "Gemfile.lock" ]; then
