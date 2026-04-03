@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>CLAUDE.md | OHPG Portfolio</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="CLAUDE.md" />
+<meta name="author" content="OHPG" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Personal portfolio website" />
+<meta property="og:description" content="Personal portfolio website" />
+<link rel="canonical" href="http://localhost:4000/CLAUDE.html" />
+<meta property="og:url" content="http://localhost:4000/CLAUDE.html" />
+<meta property="og:site_name" content="OHPG Portfolio" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="CLAUDE.md" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"OHPG"},"description":"Personal portfolio website","headline":"CLAUDE.md","url":"http://localhost:4000/CLAUDE.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/css/style.css">
+  </head>
+  <body>
+    <main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">CLAUDE.md</h1>
+  </header>
+
+  <div class="post-content">
+    <h1 id="claudemd">CLAUDE.md</h1>
+
+<p>This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.</p>
+
+<h2 id="project-overview">Project Overview</h2>
+
+<p>This is a Jekyll-based GitHub Pages portfolio site for OHPG. It showcases four HarmonyOS (鸿蒙) applications that work with Jellyfin media server: FinVideo, FinMusic, FinBook, and FinAdmin.</p>
+
+<h2 id="common-commands">Common Commands</h2>
+
+<h3 id="local-development">Local Development</h3>
+
+<p><strong>Quick start (recommended):</strong></p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># First-time setup (installs Ruby, Jekyll, and dependencies)</span>
+./setup.sh
+
+<span class="c"># Start the local development server</span>
+./start.sh
+</code></pre></div></div>
+
+<p><strong>Manual commands:</strong></p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Install dependencies</span>
+bundle <span class="nb">install</span>
+
+<span class="c"># Start development server with live reload</span>
+bundle <span class="nb">exec </span>jekyll serve <span class="nt">--watch</span> <span class="nt">--livereload</span>
+
+<span class="c"># Start server and open browser automatically</span>
+bundle <span class="nb">exec </span>jekyll serve <span class="nt">--open-url</span>
+
+<span class="c"># Build site (outputs to _site/)</span>
+bundle <span class="nb">exec </span>jekyll build
+
+<span class="c"># Clean generated files</span>
+bundle <span class="nb">exec </span>jekyll clean
+</code></pre></div></div>
+
+<h3 id="jekyll-configuration">Jekyll Configuration</h3>
+
+<p>Key configuration files:</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">_config.yml</code> - Jekyll configuration, theme settings (minima), and custom variables</li>
+  <li><code class="language-plaintext highlighter-rouge">Gemfile</code> - Ruby dependencies (github-pages gem, webrick)</li>
+</ul>
+
+<h2 id="architecture-overview">Architecture Overview</h2>
+
+<h3 id="data-driven-content">Data-Driven Content</h3>
+
+<p>Site content is driven by YAML data files in <code class="language-plaintext highlighter-rouge">_data/</code>:</p>
+
+<ul>
+  <li><strong><code class="language-plaintext highlighter-rouge">_data/summary.yml</code></strong> - Hero section stats and project logo list</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">_data/projects.yml</code></strong> - Detailed project showcase data (FinVideo, FinMusic, FinBook, FinAdmin)</li>
+</ul>
+
+<p>Each project in <code class="language-plaintext highlighter-rouge">projects.yml</code> includes: metadata (name, GitHub URL, tags), device-specific previews (mobile/tablet/desktop), and feature descriptions.</p>
+
+<h3 id="layout-structure">Layout Structure</h3>
+
+<ul>
+  <li><strong><code class="language-plaintext highlighter-rouge">_layouts/default.html</code></strong> - Base HTML template with footer</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">index.md</code></strong> - Main page using <code class="language-plaintext highlighter-rouge">default</code> layout; contains all content (Hero section, projects showcase, and interactive JavaScript)</li>
+</ul>
+
+<h3 id="asset-organization">Asset Organization</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>assets/
+├── css/
+│   ├── style.css      # Main custom styles
+│   ├── main.css       # Minimal overrides
+│   └── aos.css        # Animate On Scroll library
+├── js/
+│   └── aos.js         # AOS animation library
+└── statics/           # Project images and logos
+    ├── FinVideo/
+    ├── FinMusic/
+    ├── FinBook/
+    └── FinAdmin/
+</code></pre></div></div>
+
+<h3 id="key-features">Key Features</h3>
+
+<ol>
+  <li><strong>Interactive Background</strong> - Canvas-based particle animation with mouse/touch interaction</li>
+  <li><strong>Device Preview Tabs</strong> - JavaScript-driven device type switching (mobile/tablet/desktop) for project showcases</li>
+  <li><strong>Image Carousel</strong> - Indicator-based image switching within each device view</li>
+  <li><strong>AOS Animations</strong> - Scroll-triggered fade-in animations</li>
+</ol>
+
+<h3 id="important-notes">Important Notes</h3>
+
+<ul>
+  <li>Uses <code class="language-plaintext highlighter-rouge">minima</code> theme with custom CSS overrides</li>
+  <li>GitHub Pages compatibility via <code class="language-plaintext highlighter-rouge">github-pages</code> gem</li>
+  <li>Local assets preferred (aos.css, aos.js stored locally rather than CDN)</li>
+  <li>Images are stored in <code class="language-plaintext highlighter-rouge">assets/statics/</code> with project-specific subdirectories</li>
+</ul>
+
+  </div>
+
+</article>
+
+      </div>
+    </main>
+
+    <!-- 添加页脚 -->
+    <footer class="site-footer">
+      <div class="footer-content">
+        <span class="copyright">
+            © 2026 OHPG Portfolio. All rights reserved.
+        </span>
+        <span class="beian">
+          <a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener">豫ICP备2025110731号-1</a>
+        </span>
+      </div>
+    </footer>
+  </body>
+</html>
