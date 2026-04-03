@@ -1,0 +1,45 @@
+<h2>移动端导航栏方案</h2>
+<p class="subtitle">方案 A 下的导航细节</p>
+
+<div class="options">
+  <div class="option" data-choice="a1" onclick="toggleSelect(this)">
+    <div class="letter">A1</div>
+    <div class="content">
+      <h3>顶部 Logo + 汉堡菜单</h3>
+      <p>左/右角放 Logo，右侧汉堡菜单，点击展开全屏导航（项目链接、GitHub 等）</p>
+    </div>
+  </div>
+
+  <div class="option" data-choice="a2" onclick="toggleSelect(this)">
+    <div class="letter">A2</div>
+    <div class="content">
+      <h3>顶部 Logo + 简洁图标</h3>
+      <p>Logo 在左，右侧放置 GitHub 等关键图标入口，无下拉菜单</p>
+    </div>
+  </div>
+
+  <div class="option" data-choice="a3" onclick="toggleSelect(this)">
+    <div class="letter">A3</div>
+    <div class="content">
+      <h3>简化顶栏</h3>
+      <p>只保留 Logo 居中显示，下方直接是 Hero 内容，不设导航区</p>
+    </div>
+  </div>
+</div>
+
+<div class="mockup" style="margin-top: 1.5rem;">
+  <div class="mockup-header">A1 汉堡菜单示意</div>
+  <div class="mockup-body">
+    <div style="border: 1px solid #333; padding: 12px; background: #0a0a0a; display: flex; justify-content: space-between; align-items: center;">
+      <div style="font-size: 16px; font-weight: bold; background: linear-gradient(90deg, #3bf4fb, #32ffa5); -webkit-background-clip: text; color: transparent;">OHPG</div>
+      <div style="width: 24px; height: 18px; display: flex; flex-direction: column; justify-content: space-between;">
+        <div style="height: 2px; background: #fff;"></div>
+        <div style="height: 2px; background: #fff;"></div>
+        <div style="height: 2px; background: #fff;"></div>
+      </div>
+    </div>
+    <div style="border: 1px solid #333; border-top: none; padding: 12px; background: #0a0a0a; text-align: center;">
+      <div style="font-size: 14px; color: #888;">Hero 内容区域</div>
+    </div>
+  </div>
+</div>

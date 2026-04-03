@@ -1,0 +1,49 @@
+<h2>项目卡片内容布局</h2>
+<p class="subtitle">每个项目的展示信息如何呈现</p>
+
+<div class="options">
+  <div class="option" data-choice="c1" onclick="toggleSelect(this)">
+    <div class="letter">C1</div>
+    <div class="content">
+      <h3>完整信息卡片</h3>
+      <p>项目名 + 截图预览 + 特性列表 + 标签 + GitHub 链接，全部垂直堆叠</p>
+    </div>
+  </div>
+
+  <div class="option" data-choice="c2" onclick="toggleSelect(this)">
+    <div class="letter">C2</div>
+    <div class="content">
+      <h3>截图优先</h3>
+      <p>截图大图占主要空间，特性列表精简或折叠显示</p>
+    </div>
+  </div>
+
+  <div class="option" data-choice="c3" onclick="toggleSelect(this)">
+    <div class="letter">C3</div>
+    <div class="content">
+      <h3>列表式</h3>
+      <p>截图缩小在左，文字信息在右，类似列表项横排</p>
+    </div>
+  </div>
+</div>
+
+<div class="mockup" style="margin-top: 1.5rem;">
+  <div class="mockup-header">C1 完整信息卡片示意</div>
+  <div class="mockup-body">
+    <div style="border: 1px solid #333; padding: 12px; background: #111;">
+      <div style="font-size: 13px; color: #3bf4fb; margin-bottom: 8px;">FINVIDEO</div>
+      <div style="display: flex; gap: 6px; margin-bottom: 10px;">
+        <div style="flex: 1; height: 26px; background: #3bf4fb; border-radius: 6px; font-size: 10px; color: #000; display: flex; align-items: center; justify-content: center; font-weight: bold;">手机</div>
+        <div style="flex: 1; height: 26px; background: #222; border-radius: 6px; font-size: 10px; color: #888; display: flex; align-items: center; justify-content: center;">平板</div>
+        <div style="flex: 1; height: 26px; background: #222; border-radius: 6px; font-size: 10px; color: #888; display: flex; align-items: center; justify-content: center;">桌面</div>
+      </div>
+      <div style="height: 130px; background: #1a1a1a; border-radius: 8px; margin-bottom: 10px;"></div>
+      <div style="font-size: 10px; color: #888; margin-bottom: 8px;">• HarmonyOS 原生体验<br>• 配合 Jellyfin 媒体服务器<br>• 支持多种视频格式播放</div>
+      <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+        <span style="font-size: 9px; padding: 2px 8px; background: #222; border-radius: 4px; color: #aaa;">HarmonyOS</span>
+        <span style="font-size: 9px; padding: 2px 8px; background: #222; border-radius: 4px; color: #aaa;">视频</span>
+        <span style="font-size: 9px; padding: 2px 8px; background: #3bf4fb; color: #000; border-radius: 4px;">GitHub →</span>
+      </div>
+    </div>
+  </div>
+</div>
