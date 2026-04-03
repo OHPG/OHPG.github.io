@@ -116,10 +116,13 @@ hide_title: true
             <div class="device-preview {% if forloop.first %}show{% endif %}">
               <div class="preview-images">
                 {% for preview in device.previews %}
-                <img src="{{ preview.image }}"
-                     class="preview-img {% if forloop.first %}active{% endif %}"
-                     data-index="{{ forloop.index0 }}"
-                     alt="{{ preview.title }}">
+                <img 
+                  data-src="{{ preview.image }}"
+                  class="preview-img {% if forloop.first %}active{% endif %}"
+                  data-index="{{ forloop.index0 }}"
+                  alt="{{ preview.title }}"
+                  loading="lazy"
+                >
         {% endfor %}
       </div>
               <div class="preview-indicators">
@@ -148,6 +151,41 @@ hide_title: true
       duration: 1000,
       once: true
     });
+    
+    // 图片懒加载
+    const lazyLoadImages = () => {
+      const lazyImages = document.querySelectorAll('.preview-img');
+      
+      if ('IntersectionObserver' in window) {
+        const imageObserver = new IntersectionObserver((entries, observer) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              const image = entry.target;
+              image.src = image.dataset.src;
+              imageObserver.unobserve(image);
+            }
+          });
+        }, {
+          rootMargin: '200px 0px'
+        });
+
+        lazyImages.forEach(img => imageObserver.observe(img));
+      } else {
+        const lazyLoad = () => {
+          lazyImages.forEach(img => {
+            if (img.getBoundingClientRect().top < window.innerHeight + 200) {
+              img.src = img.dataset.src;
+            }
+          });
+        };
+        window.addEventListener('scroll', lazyLoad);
+        window.addEventListener('resize', lazyLoad);
+        lazyLoad();
+      }
+    };
+    
+    // 初始化懒加载
+    lazyLoadImages();
 
      // 设备类型切换
     const deviceTabs = document.querySelectorAll('.device-tab');
@@ -470,5 +508,60 @@ hide_title: true
             
     // 调用初始化
     initDevicePreview();
+    
+    // 优化触摸交互
+    deviceTabs.forEach(tab => {
+      // 防止触摸设备上的双击缩放
+      tab.addEventListener('touchend', function(e) {
+        const touch = e.changedTouches[0];
+        const mouseEvent = new MouseEvent('click', {
+          view: window,
+          bubbles: true,
+          cancelable: true,
+          clientX: touch.clientX,
+          clientY: touch.clientY
+        });
+        touch.target.dispatchEvent(mouseEvent);
+      });
+    });
+    
+    // 优化图片切换的触摸滑动
+    const previewContainers = document.querySelectorAll('.preview-images');
+    previewContainers.forEach(container => {
+      let startX = 0;
+      let endX = 0;
+
+      container.addEventListener('touchstart', function(e) {
+        startX = e.touches[0].clientX;
+      }, { passive: true });
+
+      container.addEventListener('touchend', function(e) {
+        endX = e.changedTouches[0].clientX;
+        handleSwipe(container, startX, endX);
+      }, { passive: true });
+
+      function handleSwipe(container, start, end) {
+        const swipeThreshold = 50; // 滑动阈值
+        const diff = start - end;
+
+        if (Math.abs(diff) > swipeThreshold) {
+          const deviceView = container.closest('.device-view');
+          const indicators = deviceView.querySelectorAll('.indicator');
+          const currentIndex = Array.from(indicators).findIndex(indicator =>
+            indicator.classList.contains('active')
+          );
+
+          if (diff > 0) {
+            // 向左滑动，显示下一张
+            const nextIndex = (currentIndex + 1) % indicators.length;
+            indicators[nextIndex].click();
+          } else {
+            // 向右滑动，显示上一张
+            const prevIndex = (currentIndex - 1 + indicators.length) % indicators.length;
+            indicators[prevIndex].click();
+          }
+        }
+      }
+    });
 });
 </script>

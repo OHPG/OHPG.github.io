@@ -3,7 +3,11 @@
     "allow": [
       "Bash(git commit:*)",
       "Bash(git push:*)",
-      "Bash(bundle exec:*)"
+      "Bash(bundle exec:*)",
+      "Bash(curl -s http://localhost:8000)",
+      "Bash(npm install:*)",
+      "Bash(lighthouse:*)",
+      "Bash(python3 -m http.server 8000)"
     ]
   }
 }

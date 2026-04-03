@@ -273,17 +273,129 @@ align-items: center;
   );
 }
 
-/* 响应式调整 */
+/* 超小屏幕设备 (320px 以下) */
+@media (max-width: 320px) {
+  .hero-content h1 {
+    font-size: 2.2rem;
+  }
+
+  .project-title {
+    font-size: 2.2rem;
+  }
+
+  .container {
+    padding: 1rem;
+  }
+
+  .project-meta {
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+
+  .meta-item {
+    font-size: 1rem;
+  }
+}
+
+/* 小屏幕设备 (320px - 480px) */
+@media (max-width: 480px) {
+  .hero-content h1 {
+    font-size: 2.5rem;
+  }
+
+  .project-title {
+    font-size: 2.5rem;
+  }
+
+  .devices-tabs {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding: 0.5rem;
+  }
+
+  .device-tab {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
+    flex: 0 0 auto;
+  }
+
+  .device-preview {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .preview-images {
+    width: 280px;
+    height: 560px;
+    margin: 0 auto;
+  }
+
+  .preview-images .preview-img {
+    width: 260px;
+    max-height: 540px;
+  }
+
+  .preview-indicators {
+    padding-left: 0;
+  }
+}
+
+/* 中等屏幕设备 (480px - 768px) */
 @media (max-width: 768px) {
   .tag-list {
     gap: 0.5rem;
     }
-    
+
   .tag {
     padding: 0.4rem 0.8rem;
     font-size: 0.8rem;
     }
-    }
+
+  .hero-content h1 {
+    font-size: 2.8rem;
+  }
+
+  .project-title {
+    font-size: 2.8rem;
+  }
+
+  .device-preview {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .preview-images {
+    width: 300px;
+    height: 600px;
+    margin: 0 auto;
+  }
+
+  .preview-images .preview-img {
+    width: 280px;
+    max-height: 580px;
+  }
+
+  .devices-tabs::before {
+    width: calc(33.33% - 1rem);
+  }
+}
+
+/* 大屏幕设备 (768px - 1024px) */
+@media (max-width: 1024px) {
+  .project-meta {
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .tag-list {
+    margin: 1rem 0;
+  }
+
+  .tag {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.85rem;
+  }
+}
 
 /* 标签类型样式 */
 .tag[data-type="framework"] {
@@ -613,6 +725,7 @@ flex-direction: column;
     opacity: 1;
     transform: scale(1) translateZ(0);
 }
+
 
 /* 指示器过渡效果优化 */
 .indicator {
