@@ -1121,11 +1121,15 @@ flex-direction: column;
 
     .indicator {
       padding: 0.3rem 0.6rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .indicator h3 {
       font-size: 0.85rem;
       margin-bottom: 0;
+      text-align: center;
     }
 
     .indicator p {
