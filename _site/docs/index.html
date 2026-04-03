@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OHPG - 技术作品集</title>
+    <!-- 引入 Remixicon 图标 -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #FFB800;
+            --text-color: #333;
+            --light-bg: #f8f9fa;
+        }
+
+        body {
+            margin: 0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            color: var(--text-color);
+            line-height: 1.6;
+            background-color: var(--light-bg);
+        }
+
+        .hero {
+            padding: 6rem 2rem;
+            text-align: left;
+            background-color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .hero-text {
+            flex: 1;
+            padding-right: 2rem;
+        }
+
+        .hero-image {
+            flex: 1;
+            text-align: center;
+        }
+
+        .hero-image img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin: 0;
+            color: var(--text-color);
+        }
+
+        .hero h1 span {
+            color: var(--primary-color);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #666;
+            margin: 1rem 0 2rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: bold;
+            transition: transform 0.3s ease;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+        }
+
+        .features {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .feature-card h3 {
+            margin: 0 0 1rem;
+            font-size: 1.5rem;
+        }
+
+        .feature-card p {
+            margin: 0;
+            color: #666;
+        }
+
+        @media (max-width: 768px) {
+            .hero-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .hero-text {
+                padding-right: 0;
+                margin-bottom: 2rem;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1><span>搭建</span>自己的<br>技术品牌</h1>
+                <p>真心不变，始终如一</p>
+                <a href="#features" class="cta-button">接入教程</a>
+            </div>
+            <div class="hero-image">
+                <!-- 使用 undraw.co 的免费插画 -->
+                <img src="https://raw.githubusercontent.com/undraw/illustrations/master/svg/developer_activity.svg" alt="Developer">
+            </div>
+        </div>
+    </section>
+
+    <section class="features" id="features">
+        <div class="feature-card">
+            <i class="feature-icon ri-file-text-line"></i>
+            <h3>上手简单</h3>
+            <p>支持 VuePress、duml、mkdocs 等主流文档生成工具，不需要额外的配置就能轻松部署成文档站点</p>
+        </div>
+
+        <div class="feature-card">
+            <i class="feature-icon ri-shield-check-line"></i>
+            <h3>安全可靠</h3>
+            <p>对接集团 SSO、UAC 服务，限制非技术岗员工访问内部技术文档站，文档自动接入统一工作台，信息安全有保障</p>
+        </div>
+
+        <div class="feature-card">
+            <i class="feature-icon ri-search-line"></i>
+            <h3>全文搜索</h3>
+            <p>依托云端的服务，给文档站点提供站点内全文搜索的服务，提升站点的易用性</p>
+        </div>
+
+        <div class="feature-card">
+            <i class="feature-icon ri-palette-line"></i>
+            <h3>个性化</h3>
+            <p>拥抱开源，有大量社区主题可供选择，也可自主定制文档主题，可以配置 Logo，在大象消息里会联动展示</p>
+        </div>
+
+        <div class="feature-card">
+            <i class="feature-icon ri-plug-line"></i>
+            <h3>生动的前端组件</h3>
+            <p>独特的 Markdown 扩展，可嵌入 Demo，插入自定义 Vue / React 组件，使得组件的文档不仅看看，还好用</p>
+        </div>
+
+        <div class="feature-card">
+            <i class="feature-icon ri-speed-line"></i>
+            <h3>高性能</h3>
+            <p>构建时，会将页面预渲染生成静态的 HTML，同时，每个页面被加载的时候，将作为 SPA 运行</p>
+        </div>
+    </section>
+</body>
+</html>
