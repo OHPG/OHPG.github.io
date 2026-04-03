@@ -1285,11 +1285,6 @@ flex-direction: column;
   font-size: 0.75rem;
 }
 
-/* GitHub Corner Mobile */
-.github-corner {
-  display: none;
-}
-
 /* Body Mobile */
 body {
   margin: 0;
