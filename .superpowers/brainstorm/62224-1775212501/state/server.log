@@ -15,3 +15,4 @@
 {"source":"user-event","type":"click","text":"A\n    \n      精简 Hero + 垂直项目堆叠\n      Hero 保留 Logo/标题/统计数字，移除横向滚动的项目图标；项目展示区垂直堆叠，设备切换标签变为分段控件","choice":"a","id":null,"timestamp":1775212634830}
 {"source":"user-event","type":"click","text":"B\n    \n      完整 Hero + 横向滑动卡片\n      保持 PC 端完整 Hero 效果；项目以可滑动的卡片形式展示，左右滑动切换，设备预览占满宽度","choice":"b","id":null,"timestamp":1775212636630}
 {"source":"user-event","type":"click","text":"A\n    \n      精简 Hero + 垂直项目堆叠\n      Hero 保留 Logo/标题/统计数字，移除横向滚动的项目图标；项目展示区垂直堆叠，设备切换标签变为分段控件","choice":"a","id":null,"timestamp":1775212637164}
+{"type":"server-stopped","reason":"owner process exited"}
