@@ -1120,21 +1120,16 @@ flex-direction: column;
     }
 
     .indicator {
-      padding: 0.4rem 0.8rem;
+      padding: 0.3rem 0.6rem;
     }
 
     .indicator h3 {
-      font-size: 0.9rem;
-      margin-bottom: 0.2rem;
+      font-size: 0.85rem;
+      margin-bottom: 0;
     }
 
     .indicator p {
-      font-size: 0.8rem;
-      display: block;
-      -webkit-line-clamp: unset;
-      -webkit-box-orient: unset;
-      overflow: visible;
-      white-space: normal;
+      display: none;
     }
 }
 
