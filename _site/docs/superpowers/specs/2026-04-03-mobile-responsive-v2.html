@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>移动端响应式适配设计方案 V2 | OHPG Portfolio</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="移动端响应式适配设计方案 V2" />
+<meta name="author" content="OHPG" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Personal portfolio website" />
+<meta property="og:description" content="Personal portfolio website" />
+<link rel="canonical" href="http://localhost:4000/docs/superpowers/specs/2026-04-03-mobile-responsive-v2.html" />
+<meta property="og:url" content="http://localhost:4000/docs/superpowers/specs/2026-04-03-mobile-responsive-v2.html" />
+<meta property="og:site_name" content="OHPG Portfolio" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="移动端响应式适配设计方案 V2" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"OHPG"},"description":"Personal portfolio website","headline":"移动端响应式适配设计方案 V2","url":"http://localhost:4000/docs/superpowers/specs/2026-04-03-mobile-responsive-v2.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/css/style.css">
+  </head>
+  <body>
+    <main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">移动端响应式适配设计方案 V2</h1>
+  </header>
+
+  <div class="post-content">
+    <h1 id="移动端响应式适配设计方案-v2">移动端响应式适配设计方案 V2</h1>
+
+<blockquote>
+  <p><strong>Goal:</strong> 修复当前移动端布局问题，实现符合移动端交互标准的展示效果</p>
+</blockquote>
+
+<h2 id="设计决策">设计决策</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>问题</th>
+      <th>解决方案</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Hero 标题换行</td>
+      <td>保持一行，使用 <code class="language-plaintext highlighter-rouge">white-space: nowrap</code> 和响应式字体</td>
+    </tr>
+    <tr>
+      <td>应用列表显示</td>
+      <td>水平滚动 1 行展示（恢复类似 PC 端）</td>
+    </tr>
+    <tr>
+      <td>Meta 信息过早换行</td>
+      <td>改为水平排列（同一行）</td>
+    </tr>
+    <tr>
+      <td>Tab 字体排列</td>
+      <td>只保留 Icon，隐藏文字</td>
+    </tr>
+    <tr>
+      <td>截图显示不全</td>
+      <td>缩小但完整显示，保持比例</td>
+    </tr>
+    <tr>
+      <td>指示器不符合规范</td>
+      <td>重新设计移动端样式</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<h2 id="详细设计">详细设计</h2>
+
+<h3 id="1-hero-区域">1. Hero 区域</h3>
+
+<p><strong>标题 (h1):</strong></p>
+<ul>
+  <li>保持 <code class="language-plaintext highlighter-rouge">clamp()</code> 响应式字体</li>
+  <li>添加 <code class="language-plaintext highlighter-rouge">white-space: nowrap</code> 防止换行</li>
+  <li>如果仍溢出自适应缩小字体</li>
+</ul>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.hero-content</span> <span class="nt">h1</span> <span class="p">{</span>
+    <span class="nl">font-size</span><span class="p">:</span> <span class="n">clamp</span><span class="p">(</span><span class="m">1.6rem</span><span class="p">,</span> <span class="m">5vw</span><span class="p">,</span> <span class="m">3.5rem</span><span class="p">);</span>
+    <span class="nl">white-space</span><span class="p">:</span> <span class="nb">nowrap</span><span class="p">;</span>
+    <span class="c">/* 其他样式保持 */</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><strong>副标题:</strong></p>
+<ul>
+  <li>使用 <code class="language-plaintext highlighter-rouge">clamp()</code> 确保不溢出</li>
+</ul>
+
+<h3 id="2-应用列表-project-logo">2. 应用列表 (Project Logo)</h3>
+
+<p><strong>移动端布局:</strong></p>
+<ul>
+  <li>恢复水平滚动（类似 PC 端）</li>
+  <li>每个卡片保持固定宽度</li>
+</ul>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">@media</span> <span class="p">(</span><span class="n">max-width</span><span class="p">:</span> <span class="m">768px</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nc">.project-scroll</span> <span class="p">{</span>
+        <span class="nl">display</span><span class="p">:</span> <span class="n">flex</span><span class="p">;</span>
+        <span class="nl">flex-wrap</span><span class="p">:</span> <span class="nb">nowrap</span><span class="p">;</span>
+        <span class="nl">overflow-x</span><span class="p">:</span> <span class="nb">auto</span><span class="p">;</span>
+        <span class="py">gap</span><span class="p">:</span> <span class="m">0.75rem</span><span class="p">;</span>
+        <span class="nl">padding</span><span class="p">:</span> <span class="m">0.5rem</span> <span class="m">1rem</span><span class="p">;</span>
+        <span class="py">scrollbar-width</span><span class="p">:</span> <span class="nb">none</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="nc">.project-logo-card</span> <span class="p">{</span>
+        <span class="nl">flex</span><span class="p">:</span> <span class="m">0</span> <span class="m">0</span> <span class="nb">auto</span><span class="p">;</span>
+        <span class="nl">width</span><span class="p">:</span> <span class="m">80px</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="nc">.project-logo</span> <span class="p">{</span>
+        <span class="nl">width</span><span class="p">:</span> <span class="m">48px</span><span class="p">;</span>
+        <span class="nl">height</span><span class="p">:</span> <span class="m">48px</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="3-项目-meta-信息">3. 项目 Meta 信息</h3>
+
+<p><strong>移动端布局:</strong></p>
+<ul>
+  <li>改为水平排列</li>
+  <li>减小间距</li>
+</ul>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">@media</span> <span class="p">(</span><span class="n">max-width</span><span class="p">:</span> <span class="m">768px</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nc">.project-meta</span> <span class="p">{</span>
+        <span class="nl">display</span><span class="p">:</span> <span class="n">flex</span><span class="p">;</span>
+        <span class="nl">flex-direction</span><span class="p">:</span> <span class="n">row</span><span class="p">;</span>
+        <span class="nl">justify-content</span><span class="p">:</span> <span class="nb">center</span><span class="p">;</span>
+        <span class="py">gap</span><span class="p">:</span> <span class="m">1rem</span><span class="p">;</span>
+        <span class="nl">flex-wrap</span><span class="p">:</span> <span class="n">wrap</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="nc">.meta-item</span> <span class="p">{</span>
+        <span class="nl">font-size</span><span class="p">:</span> <span class="m">0.8rem</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="4-设备-tab">4. 设备 Tab</h3>
+
+<p><strong>移动端:</strong></p>
+<ul>
+  <li>只显示 Icon</li>
+  <li>隐藏文字</li>
+</ul>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">@media</span> <span class="p">(</span><span class="n">max-width</span><span class="p">:</span> <span class="m">768px</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nc">.device-tab</span> <span class="nt">span</span> <span class="p">{</span>
+        <span class="nl">display</span><span class="p">:</span> <span class="nb">none</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="nc">.device-tab</span> <span class="p">{</span>
+        <span class="nl">padding</span><span class="p">:</span> <span class="m">0.8rem</span><span class="p">;</span>
+        <span class="nl">min-height</span><span class="p">:</span> <span class="m">44px</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="5-截图和指示器">5. 截图和指示器</h3>
+
+<p><strong>移动端截图:</strong></p>
+<ul>
+  <li>按比例缩小但完整显示</li>
+  <li>最大宽度不超过屏幕宽度</li>
+</ul>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">@media</span> <span class="p">(</span><span class="n">max-width</span><span class="p">:</span> <span class="m">768px</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nc">.preview-images</span> <span class="p">{</span>
+        <span class="nl">width</span><span class="p">:</span> <span class="m">120px</span><span class="p">;</span>
+        <span class="nl">height</span><span class="p">:</span> <span class="nb">auto</span><span class="p">;</span>
+        <span class="py">aspect-ratio</span><span class="p">:</span> <span class="m">9</span><span class="p">/</span><span class="m">16</span><span class="p">;</span>
+        <span class="nl">margin</span><span class="p">:</span> <span class="m">0</span> <span class="nb">auto</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="nc">.preview-img</span> <span class="p">{</span>
+        <span class="nl">width</span><span class="p">:</span> <span class="m">100%</span><span class="p">;</span>
+        <span class="nl">height</span><span class="p">:</span> <span class="nb">auto</span><span class="p">;</span>
+        <span class="nl">max-height</span><span class="p">:</span> <span class="nb">none</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><strong>指示器优化:</strong></p>
+<ul>
+  <li>文字大小适中</li>
+  <li>间距调整</li>
+</ul>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">@media</span> <span class="p">(</span><span class="n">max-width</span><span class="p">:</span> <span class="m">768px</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nc">.indicator</span> <span class="p">{</span>
+        <span class="nl">padding</span><span class="p">:</span> <span class="m">0.6rem</span> <span class="m">0.8rem</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="nc">.indicator</span> <span class="nt">h3</span> <span class="p">{</span>
+        <span class="nl">font-size</span><span class="p">:</span> <span class="m">0.85rem</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="nc">.indicator</span> <span class="nt">p</span> <span class="p">{</span>
+        <span class="nl">font-size</span><span class="p">:</span> <span class="m">0.75rem</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="预期效果">预期效果</h2>
+
+<h3 id="移动端-768px">移动端 (&lt;768px)</h3>
+
+<p><strong>Hero 区域:</strong></p>
+<ul>
+  <li>标题 “创新技术 优质体验” 同一行显示</li>
+  <li>副标题正常显示</li>
+  <li>应用列表水平滚动</li>
+</ul>
+
+<p><strong>Projects 区域:</strong></p>
+<ul>
+  <li>项目标题居中</li>
+  <li>Meta 信息水平排列</li>
+  <li>Tab 只显示图标</li>
+  <li>截图完整显示</li>
+</ul>
+
+<h3 id="pc-端-1024px">PC 端 (&gt;1024px)</h3>
+<ul>
+  <li>保持原有布局不变</li>
+</ul>
+
+  </div>
+
+</article>
+
+      </div>
+    </main>
+
+    <!-- 添加页脚 -->
+    <footer class="site-footer">
+      <div class="footer-content">
+        <span class="copyright">
+            © 2026 OHPG Portfolio. All rights reserved.
+        </span>
+        <span class="beian">
+          <a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener">豫ICP备2025110731号-1</a>
+        </span>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -17,6 +17,28 @@ hide_title: true
 <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
 <canvas id="bgCanvas" class="background-canvas"></canvas>
 
+<!-- Mobile Navigation -->
+<div class="mobile-nav">
+  <div class="mobile-nav-bar">
+    <div class="logo">OHPG</div>
+    <button class="hamburger" aria-label="Toggle menu">
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+    </button>
+  </div>
+  <div class="mobile-nav-overlay">
+    <nav class="mobile-nav-links">
+      {% for project in site.data.summary.projects %}
+      <a href="{{ project.link }}" class="mobile-nav-link">{{ project.name }}</a>
+      {% endfor %}
+      <a href="https://github.com/OHPG" target="_blank" class="mobile-nav-link">
+        <i class="ri-github-fill"></i> GitHub
+      </a>
+    </nav>
+  </div>
+</div>
+
 <!-- Hero Section -->
 <div class="hero">
       <!-- GitHub Corner -->
@@ -146,6 +168,27 @@ hide_title: true
 
 <script>
   document.addEventListener('DOMContentLoaded', function() {
+    // Mobile Navigation Toggle
+    const hamburger = document.querySelector('.hamburger');
+    const mobileNavOverlay = document.querySelector('.mobile-nav-overlay');
+
+    if (hamburger && mobileNavOverlay) {
+      hamburger.addEventListener('click', function() {
+        hamburger.classList.toggle('active');
+        mobileNavOverlay.classList.toggle('active');
+        document.body.style.overflow = mobileNavOverlay.classList.contains('active') ? 'hidden' : '';
+      });
+
+      // Close menu when clicking a link
+      mobileNavOverlay.querySelectorAll('.mobile-nav-link').forEach(link => {
+        link.addEventListener('click', function() {
+          hamburger.classList.remove('active');
+          mobileNavOverlay.classList.remove('active');
+          document.body.style.overflow = '';
+        });
+      });
+    }
+
     // 初始化 AOS
     AOS.init({
       duration: 1000,
@@ -378,7 +421,8 @@ hide_title: true
 
     // 减少粒子数量
     const particles = [];
-    const particleCount = Math.min(window.innerWidth / 20, 40); // 减少粒子数量
+    const isMobile = window.innerWidth < 768;
+    const particleCount = isMobile ? 15 : Math.min(window.innerWidth / 20, 40);
 
     for (let i = 0; i < particleCount; i++) {
       particles.push(new Particle());

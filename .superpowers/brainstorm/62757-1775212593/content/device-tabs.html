@@ -1,0 +1,43 @@
+<h2>设备切换交互方式</h2>
+<p class="subtitle">项目展示区的设备标签切换</p>
+
+<div class="options">
+  <div class="option" data-choice="b1" onclick="toggleSelect(this)">
+    <div class="letter">B1</div>
+    <div class="content">
+      <h3>分段控件</h3>
+      <p>手机 / 平板 / 桌面 横向排列，当前选中项有背景高亮，切换时预览区内容变化</p>
+    </div>
+  </div>
+
+  <div class="option" data-choice="b2" onclick="toggleSelect(this)">
+    <div class="letter">B2</div>
+    <div class="content">
+      <h3>滑动切换（Swipe）</h3>
+      <p>整个预览区域支持左右滑动切换设备类型，类似手机浏览器的 ViewPager</p>
+    </div>
+  </div>
+
+  <div class="option" data-choice="b3" onclick="toggleSelect(this)">
+    <div class="letter">B3</div>
+    <div class="content">
+      <h3>下拉选择</h3>
+      <p>一个设备选择下拉菜单，预览图固定显示，选中后刷新预览内容</p>
+    </div>
+  </div>
+</div>
+
+<div class="mockup" style="margin-top: 1.5rem;">
+  <div class="mockup-header">B1 分段控件示意</div>
+  <div class="mockup-body">
+    <div style="border: 1px solid #333; padding: 12px; background: #111;">
+      <div style="font-size: 12px; color: #3bf4fb; margin-bottom: 12px;">FINVIDEO</div>
+      <div style="display: flex; gap: 6px; margin-bottom: 12px;">
+        <div style="flex: 1; height: 28px; background: #3bf4fb; border-radius: 6px; font-size: 11px; color: #000; display: flex; align-items: center; justify-content: center; font-weight: bold;">手机</div>
+        <div style="flex: 1; height: 28px; background: #222; border-radius: 6px; font-size: 11px; color: #888; display: flex; align-items: center; justify-content: center;">平板</div>
+        <div style="flex: 1; height: 28px; background: #222; border-radius: 6px; font-size: 11px; color: #888; display: flex; align-items: center; justify-content: center;">桌面</div>
+      </div>
+      <div style="height: 140px; background: #1a1a1a; border-radius: 8px;"></div>
+    </div>
+  </div>
+</div>

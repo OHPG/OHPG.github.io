@@ -15,7 +15,7 @@ body {
     color: var(--text);
     font-family: 'Inter', sans-serif;
     line-height: 1.6;
-    margin: 2rem;
+    margin: 2rem 2rem 0 2rem;
 }
 
 .container {
@@ -342,6 +342,75 @@ align-items: center;
 
 /* 中等屏幕设备 (480px - 768px) */
 @media (max-width: 768px) {
+  /* Show mobile nav on mobile */
+  .mobile-nav {
+    display: block;
+  }
+
+  /* Hero Mobile */
+  .hero {
+    min-height: auto;
+    padding: 80px 1rem 2rem;
+  }
+
+  .hero-content h1 {
+    font-size: 2rem;
+    line-height: 1.3;
+  }
+
+  .subtitle {
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .logo {
+    font-size: 3rem;
+  }
+
+  .summary-stats {
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+  }
+
+  .stat-item {
+    padding: 0.5rem 1rem;
+  }
+
+  .project-list {
+    display: block;
+    margin: 1rem 0 0;
+  }
+
+  .project-list::after {
+    display: none;
+  }
+
+  .project-scroll {
+    padding: 1rem;
+    gap: 0.8rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .project-logo-card {
+    flex: 0 0 auto;
+    min-width: 70px;
+    max-width: 90px;
+    padding: 0.8rem;
+  }
+
+  .project-logo {
+    width: 36px;
+    height: 36px;
+  }
+
+  .project-name {
+    font-size: 0.75rem;
+    white-space: nowrap;
+  }
+
   .tag-list {
     gap: 0.5rem;
     }
@@ -555,6 +624,9 @@ align-items: center;
     overflow: hidden;
     transform-style: preserve-3d;
     perspective: 1000px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 /* 右侧指示器容器样式更新 */
@@ -677,8 +749,7 @@ flex-direction: column;
 /* 设备预览区域样式更新 */
 .devices-content {
     position: relative;
-    min-height: 600px;
-    /* 设置固定高度，防止跳变 */
+    /* min-height removed - let content determine height */
   }
   
 .device-view {
@@ -699,12 +770,15 @@ flex-direction: column;
     opacity: 0;
     transform: translateY(20px);
     transition: all 0.5s ease;
-    display: grid;
 }
 
 .device-preview.show {
     opacity: 1;
     transform: translateY(0);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
 }
 
 /* 预览图片过渡效果优化 */
@@ -715,7 +789,9 @@ flex-direction: column;
     max-height: 580px;
     object-fit: contain;
     opacity: 0;
-    transform: scale(0.95) translateZ(0);
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) scale(0.95) translateZ(0);
     transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
     transform-style: preserve-3d;
     will-change: transform;
@@ -723,7 +799,7 @@ flex-direction: column;
 
 .preview-img.active {
     opacity: 1;
-    transform: scale(1) translateZ(0);
+    transform: translate(-50%, -50%) scale(1) translateZ(0);
 }
 
 
@@ -778,7 +854,9 @@ flex-direction: column;
     max-height: 580px;
     object-fit: contain;
     opacity: 0;
-    transform: scale(0.95) translateZ(0);
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) scale(0.95) translateZ(0);
     transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
     transform-style: preserve-3d;
     will-change: transform;
@@ -786,7 +864,7 @@ flex-direction: column;
 
 .preview-img.active {
     opacity: 1;
-    transform: scale(1) translateZ(0);
+    transform: translate(-50%, -50%) scale(1) translateZ(0);
 }
 
 /* 添加悬停效果 */
@@ -912,7 +990,7 @@ flex-direction: column;
     flex-direction: column;
     align-items: center;
     gap: 1rem;
-    padding: 1.5rem;
+    padding: 1rem;
     text-decoration: none;
     transition: all 0.3s ease;
     border-radius: 12px;
@@ -929,11 +1007,11 @@ flex-direction: column;
 
 .project-logo-card:hover {
     background: rgba(59, 244, 251, 0.05);
-    transform: translateY(-15px);
+    transform: translateY(-1px);
 }
 
 .project-logo-card:hover .project-logo {
-    transform: scale(1.6);
+    transform: scale(1.1);
 }
 
 .project-name {
@@ -970,6 +1048,136 @@ flex-direction: column;
 
     .logo {
         font-size: 2.5rem;
+    }
+
+    /* Project Cards Mobile */
+    .project-showcase {
+        padding: 2rem 0;
+    }
+
+    .project-header {
+        margin-bottom: 2rem;
+    }
+
+    .project-title {
+        font-size: 1.8rem;
+    }
+
+    .project-meta {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.8rem;
+        align-items: center;
+    }
+
+    .meta-item {
+        white-space: nowrap;
+    }
+
+    .project-description {
+        font-size: 0.95rem;
+        padding: 0 1rem;
+    }
+
+    /* Device Tabs Mobile - Segmented Control Style */
+    .devices-tabs {
+      background: var(--card-bg);
+      padding: 4px;
+      gap: 4px;
+    }
+
+    .devices-tabs::before {
+      display: none;
+    }
+
+    .device-tab {
+      flex: 1;
+      padding: 0.6rem 0.5rem;
+      font-size: 0.85rem;
+      border-radius: 6px;
+      background: transparent;
+    }
+
+    .device-tab.active {
+      background: var(--primary);
+      color: #000;
+      font-weight: 600;
+    }
+
+    .device-tab.active i {
+      transform: none;
+    }
+
+    .device-tab:not(.active) {
+      color: var(--text);
+      opacity: 0.7;
+    }
+
+    .device-tab:hover:not(.active) {
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--text);
+    }
+
+    /* Preview Images Mobile */
+    .devices-section {
+      padding: 1rem;
+    }
+
+    .device-preview {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+
+    .preview-images {
+      width: 100%;
+      max-width: 280px;
+      height: auto;
+      aspect-ratio: 9/16;
+      margin: 0 auto;
+      border-radius: 20px;
+      background: linear-gradient(135deg, #1a1a1a, #2a2a2a);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .preview-images:hover {
+      transform: none;
+    }
+
+    .preview-img {
+      width: 90%;
+      max-height: 95%;
+      object-fit: contain;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      position: absolute;
+    }
+
+    .preview-indicators {
+      padding-left: 0;
+      max-height: none;
+      overflow-y: visible;
+    }
+
+    .indicator {
+      padding: 0.3rem 0.6rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .indicator h3 {
+      font-size: 0.85rem;
+      margin-bottom: 0;
+      text-align: center;
+    }
+
+    .indicator p {
+      display: none;
     }
 }
 
@@ -1075,6 +1283,27 @@ flex-direction: column;
   }
 }
 
+/* Footer Mobile */
+.site-footer {
+  padding: 1.5rem 0;
+}
+
+.footer-content {
+  flex-direction: column;
+  gap: 0.5rem;
+  height: auto;
+  padding: 1rem;
+}
+
+.copyright, .beian {
+  font-size: 0.75rem;
+}
+
+/* Body Mobile */
+body {
+  margin: 0;
+}
+
 /* 背景 Canvas 样式 */
 .background-canvas {
   position: fixed;
@@ -1102,6 +1331,109 @@ flex-direction: column;
 
 .demo-link:hover {
   color: var(--primary);
+}
+
+/* ============================================
+   Mobile Navigation (Hamburger Menu)
+   ============================================ */
+
+.mobile-nav {
+  display: none;
+}
+
+.mobile-nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+.mobile-nav-bar .logo {
+  font-size: 1.5rem;
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hamburger {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 24px;
+  height: 18px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 1001;
+}
+
+.hamburger-line {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: var(--text);
+  transition: all 0.3s ease;
+}
+
+.mobile-nav-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.95);
+  z-index: 999;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mobile-nav-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.mobile-nav-links {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+.mobile-nav-link {
+  font-size: 1.5rem;
+  color: var(--text);
+  text-decoration: none;
+  transition: color 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.mobile-nav-link:hover {
+  color: var(--primary);
+}
+
+/* Hamburger animation when open */
+.hamburger.active .hamburger-line:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+
+.hamburger.active .hamburger-line:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.active .hamburger-line:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
 }
 
 

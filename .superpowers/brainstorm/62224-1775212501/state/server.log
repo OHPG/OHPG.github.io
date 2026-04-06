@@ -1,0 +1,18 @@
+{"type":"server-started","port":62709,"host":"127.0.0.1","url_host":"localhost","url":"http://localhost:62709","screen_dir":"/Users/wangx/sync-nas/OHPG.github.io/.superpowers/brainstorm/62224-1775212501/content","state_dir":"/Users/wangx/sync-nas/OHPG.github.io/.superpowers/brainstorm/62224-1775212501/state"}
+{"type":"screen-added","file":"/Users/wangx/sync-nas/OHPG.github.io/.superpowers/brainstorm/62224-1775212501/content/layout-options.html"}
+{"source":"user-event","type":"click","text":"A\n    \n      精简 Hero + 垂直项目堆叠\n      Hero 保留 Logo/标题/统计数字，移除横向滚动的项目图标；项目展示区垂直堆叠，设备切换标签变为分段控件","choice":"a","id":null,"timestamp":1775212606513}
+{"source":"user-event","type":"click","text":"B\n    \n      完整 Hero + 横向滑动卡片\n      保持 PC 端完整 Hero 效果；项目以可滑动的卡片形式展示，左右滑动切换，设备预览占满宽度","choice":"b","id":null,"timestamp":1775212610128}
+{"source":"user-event","type":"click","text":"A\n    \n      精简 Hero + 垂直项目堆叠\n      Hero 保留 Logo/标题/统计数字，移除横向滚动的项目图标；项目展示区垂直堆叠，设备切换标签变为分段控件","choice":"a","id":null,"timestamp":1775212610746}
+{"source":"user-event","type":"click","text":"A\n    \n      精简 Hero + 垂直项目堆叠\n      Hero 保留 Logo/标题/统计数字，移除横向滚动的项目图标；项目展示区垂直堆叠，设备切换标签变为分段控件","choice":"a","id":null,"timestamp":1775212611929}
+{"source":"user-event","type":"click","text":"A\n    \n      精简 Hero + 垂直项目堆叠\n      Hero 保留 Logo/标题/统计数字，移除横向滚动的项目图标；项目展示区垂直堆叠，设备切换标签变为分段控件","choice":"a","id":null,"timestamp":1775212612128}
+{"source":"user-event","type":"click","text":"A\n    \n      精简 Hero + 垂直项目堆叠\n      Hero 保留 Logo/标题/统计数字，移除横向滚动的项目图标；项目展示区垂直堆叠，设备切换标签变为分段控件","choice":"a","id":null,"timestamp":1775212616129}
+{"source":"user-event","type":"click","text":"A\n    \n      精简 Hero + 垂直项目堆叠\n      Hero 保留 Logo/标题/统计数字，移除横向滚动的项目图标；项目展示区垂直堆叠，设备切换标签变为分段控件","choice":"a","id":null,"timestamp":1775212616496}
+{"source":"user-event","type":"click","text":"A\n    \n      精简 Hero + 垂直项目堆叠\n      Hero 保留 Logo/标题/统计数字，移除横向滚动的项目图标；项目展示区垂直堆叠，设备切换标签变为分段控件","choice":"a","id":null,"timestamp":1775212616661}
+{"source":"user-event","type":"click","text":"B\n    \n      完整 Hero + 横向滑动卡片\n      保持 PC 端完整 Hero 效果；项目以可滑动的卡片形式展示，左右滑动切换，设备预览占满宽度","choice":"b","id":null,"timestamp":1775212619879}
+{"source":"user-event","type":"click","text":"C\n    \n      底部 Tab 导航 + 简化 Hero\n      移动端特有的底部导航栏（首页/项目/关于）；Hero 区域精简为主题 Logo + 一句话描述；内容区全宽展示","choice":"c","id":null,"timestamp":1775212620645}
+{"source":"user-event","type":"click","text":"B\n    \n      完整 Hero + 横向滑动卡片\n      保持 PC 端完整 Hero 效果；项目以可滑动的卡片形式展示，左右滑动切换，设备预览占满宽度","choice":"b","id":null,"timestamp":1775212621545}
+{"source":"user-event","type":"click","text":"A\n    \n      精简 Hero + 垂直项目堆叠\n      Hero 保留 Logo/标题/统计数字，移除横向滚动的项目图标；项目展示区垂直堆叠，设备切换标签变为分段控件","choice":"a","id":null,"timestamp":1775212622378}
+{"source":"user-event","type":"click","text":"A\n    \n      精简 Hero + 垂直项目堆叠\n      Hero 保留 Logo/标题/统计数字，移除横向滚动的项目图标；项目展示区垂直堆叠，设备切换标签变为分段控件","choice":"a","id":null,"timestamp":1775212634830}
+{"source":"user-event","type":"click","text":"B\n    \n      完整 Hero + 横向滑动卡片\n      保持 PC 端完整 Hero 效果；项目以可滑动的卡片形式展示，左右滑动切换，设备预览占满宽度","choice":"b","id":null,"timestamp":1775212636630}
+{"source":"user-event","type":"click","text":"A\n    \n      精简 Hero + 垂直项目堆叠\n      Hero 保留 Logo/标题/统计数字，移除横向滚动的项目图标；项目展示区垂直堆叠，设备切换标签变为分段控件","choice":"a","id":null,"timestamp":1775212637164}
+{"type":"server-stopped","reason":"owner process exited"}
