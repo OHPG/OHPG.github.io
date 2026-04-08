@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OHPG - 创新技术 · 优质体验</title>
+    <!-- 字体 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <!-- 图标 -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+</head>
+<body>
+    <!-- 多层渐变背景 -->
+    <div class="bg-layers">
+        <div class="bg-gradient"></div>
+        <div class="bg-orb orb-1"></div>
+        <div class="bg-orb orb-2"></div>
+        <div class="bg-orb orb-3"></div>
+    </div>
+
+    <!-- 全屏翻页容器 -->
+    <main class="slides-container" id="slidesContainer">
+        <!-- 4 个项目翻页，每页一个 -->
+    </main>
+
+    <!-- 分页指示器 -->
+    <nav class="page-indicators" id="pageIndicators">
+        <button class="indicator-dot active" data-index="0"></button>
+        <button class="indicator-dot" data-index="1"></button>
+        <button class="indicator-dot" data-index="2"></button>
+        <button class="indicator-dot" data-index="3"></button>
+    </nav>
+
+    <!-- 截图模态框 -->
+    <div class="modal" id="screenshotModal">
+        <button class="modal-close" id="modalClose">
+            <i class="ri-close-line"></i>
+        </button>
+        <img src="" alt="截图大图" class="modal-image" id="modalImage">
+    </div>
+
+    <script>
+    // 项目数据
+    const projectsData = [
+        {
+            id: 'FinVideo',
+            name: 'FinVideo',
+            icon: 'https://raw.githubusercontent.com/OHPG/FinVideo/main/assets/icon.png',
+            description: 'Jellyfin 视频播放器，让你的影片库触手可及',
+            tags: ['鸿蒙', 'Jellyfin', '视频播放'],
+            features: ['直接播放', '简单易用', '手势操作', '多用户支持'],
+            screenshots: [
+                'https://raw.githubusercontent.com/OHPG/OHPG.github.io/main/assets/statics/FinVideo/Market/FinVideo1.jpg',
+                'https://raw.githubusercontent.com/OHPG/OHPG.github.io/main/assets/statics/FinVideo/Market/FinVideo2.jpg',
+                'https://raw.githubusercontent.com/OHPG/OHPG.github.io/main/assets/statics/FinVideo/Market/FinVideo3.jpg'
+            ],
+            github: 'https://github.com/OHPG/FinVideo',
+            demo_url: 'https://github.com/OHPG/FinVideo/releases/tag/v0.1.0'
+        },
+        {
+            id: 'FinMusic',
+            name: 'FinMusic',
+            icon: 'https://raw.githubusercontent.com/OHPG/FinMusic/main/assets/icon.png',
+            description: 'Jellyfin 音乐播放器，随时随地享受高品质音乐',
+            tags: ['鸿蒙', 'Jellyfin', '音乐播放'],
+            features: ['多平台音源聚合', '智能歌单管理', '高品质音频支持'],
+            screenshots: [
+                'https://raw.githubusercontent.com/OHPG/OHPG.github.io/main/assets/statics/FinMusic/Market/FinMusic1.jpg',
+                'https://raw.githubusercontent.com/OHPG/OHPG.github.io/main/assets/statics/FinMusic/Market/FinMusic2.jpg',
+                'https://raw.githubusercontent.com/OHPG/OHPG.github.io/main/assets/statics/FinMusic/Market/FinMusic3.jpg'
+            ],
+            github: 'https://github.com/OHPG/FinMusic',
+            demo_url: '#'
+        },
+        {
+            id: 'FinBook',
+            name: 'FinBook',
+            icon: 'https://raw.githubusercontent.com/OHPG/FinBook/main/assets/icon.png',
+            description: 'Jellyfin 电子阅读器，沉浸式阅读体验',
+            tags: ['鸿蒙', 'Jellyfin', '阅读器'],
+            features: ['多格式支持', '智能排版', '云端同步'],
+            screenshots: [
+                'https://raw.githubusercontent.com/OHPG/OHPG.github.io/main/assets/statics/FinBook/Market/FinBook1.jpg',
+                'https://raw.githubusercontent.com/OHPG/OHPG.github.io/main/assets/statics/FinBook/Market/FinBook2.jpg'
+            ],
+            github: 'https://github.com/OHPG/FinBook',
+            demo_url: '#'
+        },
+        {
+            id: 'FinAdmin',
+            name: 'FinAdmin',
+            icon: 'https://raw.githubusercontent.com/OHPG/FinAdmin/main/assets/icon.png',
+            description: 'Jellyfin 媒体管理工具，数据一目了然',
+            tags: ['鸿蒙', 'Jellyfin', '后台管理'],
+            features: ['数据更新', '权限管理', '媒体编辑'],
+            screenshots: [
+                'https://raw.githubusercontent.com/OHPG/OHPG.github.io/main/assets/statics/FinAdmin/Market/FinAdmin1.jpg',
+                'https://raw.githubusercontent.com/OHPG/OHPG.github.io/main/assets/statics/FinAdmin/Market/FinAdmin2.jpg',
+                'https://raw.githubusercontent.com/OHPG/OHPG.github.io/main/assets/statics/FinAdmin/Market/FinAdmin3.jpg'
+            ],
+            github: 'https://github.com/OHPG/FinAdmin',
+            demo_url: '#'
+        }
+    ];
+
+    // ========== 样式 ==========
+    const styles = `
+        :root {
+            /* 色彩系统 */
+            --bg-start: #667eea;
+            --bg-end: #764ba2;
+            --glass-bg: rgba(255, 255, 255, 0.15);
+            --glass-border: rgba(255, 255, 255, 0.3);
+            --glass-shadow: rgba(0, 0, 0, 0.2);
+            --text-primary: #ffffff;
+            --text-secondary: rgba(255, 255, 255, 0.8);
+            --accent: #ff6b9d;
+
+            /* 间距系统 */
+            --space-xs: 8px;
+            --space-sm: 16px;
+            --space-md: 24px;
+            --space-lg: 32px;
+            --space-xl: 48px;
+            --space-2xl: 64px;
+
+            /* 动画 */
+            --duration-fast: 200ms;
+            --duration-normal: 400ms;
+            --duration-slow: 800ms;
+            --ease-smooth: cubic-bezier(0.77, 0, 0.175, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, var(--bg-start), var(--bg-end));
+            color: var(--text-primary);
+            overflow: hidden;
+            height: 100vh;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* 多层背景容器 */
+        .bg-layers {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        /* 渐变背景 */
+        .bg-gradient {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--bg-start) 0%, var(--bg-end) 100%);
+        }
+
+        /* 模糊光斑 */
+        .bg-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.6;
+            will-change: transform;
+        }
+
+        .orb-1 {
+            width: 600px;
+            height: 600px;
+            background: rgba(102, 126, 234, 0.5);
+            top: -200px;
+            right: -200px;
+        }
+
+        .orb-2 {
+            width: 500px;
+            height: 500px;
+            background: rgba(118, 75, 162, 0.5);
+            bottom: -150px;
+            left: -150px;
+        }
+
+        .orb-3 {
+            width: 400px;
+            height: 400px;
+            background: rgba(255, 107, 157, 0.4);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        /* 全屏翻页容器 */
+        .slides-container {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        /* 单个翻页 */
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transform: scale(0.9);
+            transition:
+                opacity var(--duration-slow) var(--ease-smooth),
+                transform var(--duration-slow) var(--ease-smooth);
+            pointer-events: none;
+        }
+
+        .slide.active {
+            opacity: 1;
+            transform: scale(1);
+            pointer-events: auto;
+        }
+
+        /* 毛玻璃卡片 */
+        .glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            box-shadow:
+                0 8px 32px var(--glass-shadow),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            padding: var(--space-2xl);
+            max-width: 900px;
+            width: 90%;
+            max-height: 85vh;
+            overflow-y: auto;
+        }
+
+        /* 卡片内容 */
+        .card-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-xl);
+            align-items: center;
+        }
+
+        @media (max-width: 900px) {
+            .card-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+        }
+
+        /* 项目头部 */
+        .project-header {
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+            margin-bottom: var(--space-md);
+        }
+
+        .project-icon {
+            width: 64px;
+            height: 64px;
+            border-radius: 16px;
+            object-fit: cover;
+        }
+
+        .project-name {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #fff 0%, rgba(255,255,255,0.8) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        @media (max-width: 900px) {
+            .project-header {
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+
+            .project-name {
+                font-size: 2rem;
+            }
+        }
+
+        /* 描述 */
+        .project-desc {
+            font-size: 1.125rem;
+            color: var(--text-secondary);
+            margin-bottom: var(--space-md);
+        }
+
+        /* 标签 */
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-xs);
+            margin-bottom: var(--space-lg);
+        }
+
+        .tag {
+            padding: 6px 16px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            font-size: 0.875rem;
+            backdrop-filter: blur(10px);
+        }
+
+        /* 功能特点 */
+        .features-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-sm);
+            margin-bottom: var(--space-lg);
+        }
+
+        .feature-tag {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 16px;
+            background: rgba(255, 107, 157, 0.2);
+            border-radius: 12px;
+            font-size: 0.875rem;
+            border: 1px solid rgba(255, 107, 157, 0.3);
+        }
+
+        .feature-tag i {
+            color: var(--accent);
+        }
+
+        /* 按钮 */
+        .project-links {
+            display: flex;
+            gap: var(--space-sm);
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-xs);
+            padding: var(--space-sm) var(--space-md);
+            border-radius: 12px;
+            font-weight: 600;
+            transition: all var(--duration-fast) ease;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #ff5588;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid var(--glass-border);
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        /* 截图 */
+        .screenshots {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--space-sm);
+        }
+
+        @media (max-width: 640px) {
+            .screenshots {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .screenshot-thumb {
+            width: 100%;
+            aspect-ratio: 16/10;
+            object-fit: cover;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all var(--duration-fast) ease;
+            border: 2px solid transparent;
+        }
+
+        .screenshot-thumb:hover {
+            transform: scale(1.05);
+            border-color: var(--accent);
+        }
+
+        /* 分页指示器 */
+        .page-indicators {
+            position: fixed;
+            bottom: var(--space-xl);
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 100;
+            display: flex;
+            gap: var(--space-sm);
+            padding: var(--space-sm);
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            border-radius: 30px;
+        }
+
+        .indicator-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            border: 2px solid white;
+            background: transparent;
+            cursor: pointer;
+            transition: all var(--duration-fast) ease;
+        }
+
+        .indicator-dot:hover {
+            transform: scale(1.2);
+        }
+
+        .indicator-dot.active {
+            background: var(--accent);
+            border-color: var(--accent);
+            transform: scale(1.3);
+        }
+
+        /* 模态框 */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1000;
+            background: rgba(0, 0, 0, 0.9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all var(--duration-normal) ease;
+        }
+
+        .modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: var(--space-md);
+            right: var(--space-md);
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all var(--duration-fast) ease;
+        }
+
+        .modal-close:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: scale(1.1);
+        }
+
+        .modal-image {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+            border-radius: 16px;
+            transform: scale(0.9);
+            transition: transform var(--duration-normal) ease;
+        }
+
+        .modal.active .modal-image {
+            transform: scale(1);
+        }
+
+        /* 入场动画 */
+        .slide.active .glass-card {
+            animation: cardEnter 0.6s ease-out forwards;
+        }
+
+        @keyframes cardEnter {
+            from {
+                opacity: 0;
+                transform: translateY(30px) scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        /* 响应式 */
+        @media (max-width: 640px) {
+            .glass-card {
+                padding: var(--space-lg);
+                border-radius: 20px;
+            }
+
+            .project-icon {
+                width: 48px;
+                height: 48px;
+            }
+
+            .project-name {
+                font-size: 1.75rem;
+            }
+
+            .btn {
+                padding: var(--space-sm) var(--space-md);
+                font-size: 0.875rem;
+            }
+        }
+    `;
+
+    // 注入样式
+    const styleSheet = document.createElement('style');
+    styleSheet.textContent = styles;
+    document.head.appendChild(styleSheet);
+    </script>
+
+    <script>
+    // ========== 全屏翻页控制器 ==========
+    class SlideController {
+        constructor() {
+            this.currentIndex = 0;
+            this.totalSlides = 4;
+            this.container = document.getElementById('slidesContainer');
+            this.isAnimating = false;
+
+            this.init();
+        }
+
+        init() {
+            this.renderSlides();
+            this.bindEvents();
+        }
+
+        renderSlides() {
+            projectsData.forEach((project, index) => {
+                const slide = document.createElement('div');
+                slide.className = `slide ${index === 0 ? 'active' : ''}`;
+                slide.dataset.index = index;
+
+                const featuresHtml = project.features.map(f =>
+                    `<span class="feature-tag"><i class="ri-checkbox-circle-fill"></i>${f}</span>`
+                ).join('');
+
+                const screenshotsHtml = project.screenshots.map((src, i) =>
+                    `<img src="${src}" alt="${project.name}截图${i + 1}" class="screenshot-thumb" data-src="${src}">`
+                ).join('');
+
+                slide.innerHTML = `
+                    <div class="glass-card">
+                        <div class="card-content">
+                            <div class="card-info">
+                                <div class="project-header">
+                                    <img src="${project.icon}" alt="${project.name}" class="project-icon">
+                                    <h1 class="project-name">${project.name}</h1>
+                                </div>
+                                <p class="project-desc">${project.description}</p>
+                                <div class="project-tags">
+                                    ${project.tags.map(t => `<span class="tag">${t}</span>`).join('')}
+                                </div>
+                                <div class="features-list">
+                                    ${featuresHtml}
+                                </div>
+                                <div class="project-links">
+                                    <a href="${project.github}" target="_blank" class="btn btn-primary">
+                                        <i class="ri-github-fill"></i> GitHub
+                                    </a>
+                                    <a href="${project.demo_url}" target="_blank" class="btn btn-secondary">
+                                        <i class="ri-global-line"></i> Release
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="card-media">
+                                <div class="screenshots">
+                                    ${screenshotsHtml}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+
+                this.container.appendChild(slide);
+            });
+        }
+
+        bindEvents() {
+            // 滚动事件
+            window.addEventListener('wheel', (e) => this.onWheel(e), { passive: false });
+
+            // 键盘事件
+            window.addEventListener('keydown', (e) => this.onKeyDown(e));
+
+            // 触摸事件
+            this.bindTouchEvents();
+
+            // 指示器点击
+            const indicators = document.querySelectorAll('.indicator-dot');
+            indicators.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    this.goToSlide(index);
+                });
+            });
+        }
+
+        bindTouchEvents() {
+            let startY = 0;
+            let startX = 0;
+
+            window.addEventListener('touchstart', (e) => {
+                startY = e.touches[0].clientY;
+                startX = e.touches[0].clientX;
+            }, { passive: true });
+
+            window.addEventListener('touchend', (e) => {
+                const endY = e.changedTouches[0].clientY;
+                const endX = e.changedTouches[0].clientX;
+                const diffY = startY - endY;
+                const diffX = startX - endX;
+
+                if (Math.abs(diffY) > Math.abs(diffX) && Math.abs(diffY) > 50) {
+                    if (diffY > 0) {
+                        this.nextSlide();
+                    } else {
+                        this.prevSlide();
+                    }
+                }
+            }, { passive: true });
+        }
+
+        goToSlide(index) {
+            if (this.isAnimating || index === this.currentIndex) return;
+            if (index < 0 || index >= this.totalSlides) return;
+
+            this.isAnimating = true;
+            const slides = document.querySelectorAll('.slide');
+            const indicators = document.querySelectorAll('.indicator-dot');
+
+            // 移除当前 active
+            slides[this.currentIndex].classList.remove('active');
+            indicators[this.currentIndex].classList.remove('active');
+
+            // 激活新的
+            this.currentIndex = index;
+            slides[this.currentIndex].classList.add('active');
+            indicators[this.currentIndex].classList.add('active');
+
+            // 重置动画锁
+            setTimeout(() => {
+                this.isAnimating = false;
+            }, 800);
+        }
+
+        nextSlide() {
+            this.goToSlide(this.currentIndex + 1);
+        }
+
+        prevSlide() {
+            this.goToSlide(this.currentIndex - 1);
+        }
+
+        onWheel(e) {
+            e.preventDefault();
+            if (e.deltaY > 0) {
+                this.nextSlide();
+            } else {
+                this.prevSlide();
+            }
+        }
+
+        onKeyDown(e) {
+            if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+                this.nextSlide();
+            } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+                this.prevSlide();
+            }
+        }
+    }
+
+    // ========== 视差背景 ==========
+    class ParallaxBackground {
+        constructor() {
+            this.orbs = document.querySelectorAll('.bg-orb');
+            this.scrollY = 0;
+            this.ticking = false;
+
+            window.addEventListener('scroll', () => this.onScroll(), { passive: true });
+            window.addEventListener('wheel', () => this.onScroll(), { passive: true });
+        }
+
+        onScroll() {
+            this.scrollY++;
+            if (!this.ticking) {
+                requestAnimationFrame(() => this.update());
+                this.ticking = true;
+            }
+        }
+
+        update() {
+            const offset = this.scrollY;
+            this.orbs[0].style.transform = `translate(${offset * 0.1}px, ${-offset * 0.05}px)`;
+            this.orbs[1].style.transform = `translate(${-offset * 0.08}px, ${offset * 0.12}px)`;
+            this.orbs[2].style.transform = `translate(${offset * 0.05}px, ${offset * 0.08}px)`;
+            this.ticking = false;
+        }
+    }
+
+    // ========== 模态框控制器 ==========
+    class ModalController {
+        constructor() {
+            this.modal = document.getElementById('screenshotModal');
+            this.modalImage = document.getElementById('modalImage');
+            this.closeBtn = document.getElementById('modalClose');
+
+            this.init();
+        }
+
+        init() {
+            this.closeBtn.addEventListener('click', () => this.close());
+
+            this.modal.addEventListener('click', (e) => {
+                if (e.target === this.modal) {
+                    this.close();
+                }
+            });
+
+            window.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && this.modal.classList.contains('active')) {
+                    this.close();
+                }
+            });
+
+            document.addEventListener('click', (e) => {
+                if (e.target.classList.contains('screenshot-thumb')) {
+                    this.open(e.target.dataset.src);
+                }
+            });
+        }
+
+        open(src) {
+            this.modalImage.src = src;
+            this.modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        close() {
+            this.modal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    }
+
+    // ========== 初始化 ==========
+    document.addEventListener('DOMContentLoaded', () => {
+        new SlideController();
+        new ParallaxBackground();
+        new ModalController();
+    });
+    </script>
+</body>
+</html>
