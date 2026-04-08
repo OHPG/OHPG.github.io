@@ -869,15 +869,14 @@ flex-direction: column;
 
 /* 添加悬停效果 */
 .preview-images:hover {
-    transform: perspective(1000px) rotateY(-15deg) rotateX(5deg) translateY(-5px);
+    transform: translateY(-5px);
     box-shadow:
-        25px 25px 40px rgba(0, 0, 0, 0.3),
-        inset -5px -5px 15px rgba(255, 255, 255, 0.1),
-        inset 5px 5px 15px rgba(0, 0, 0, 0.1);
+        0 20px 40px rgba(0, 0, 0, 0.4),
+        0 0 20px rgba(59, 244, 251, 0.1);
 }
 
 .preview-images:hover .preview-img.active {
-    transform: scale(1.05) translateZ(50px);
+    transform: translate(-50%, -50%) scale(1.02) translateZ(0);
 }
 
 /* 添加光影效果 */
