@@ -517,7 +517,38 @@
 
         /* Footer */
         .footer {
-            /* 占位 - 待实现 */
+            position: relative;
+            z-index: 1;
+            padding: var(--space-xl) 0;
+            border-top: 1px solid var(--border-subtle);
+        }
+
+        .footer-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .footer-text {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+        }
+
+        .footer-github {
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+            transition: color var(--duration-fast) ease;
+        }
+
+        .footer-github:hover {
+            color: var(--accent-cyan);
+        }
+
+        @media (max-width: 480px) {
+            .footer-inner {
+                flex-direction: column;
+                gap: var(--space-sm);
+            }
         }
 
         /* 粒子画布 */
@@ -600,7 +631,12 @@
 
     <!-- Footer -->
     <footer class="footer">
-        <!-- 占位 - 待实现 -->
+        <div class="container footer-inner">
+            <p class="footer-text">© 2026 OHPG. Built with HarmonyOS.</p>
+            <a href="https://github.com/OHPG" target="_blank" class="footer-github">
+                <i class="ri-github-fill"></i>
+            </a>
+        </div>
     </footer>
 
     <!-- 粒子背景 Canvas -->
