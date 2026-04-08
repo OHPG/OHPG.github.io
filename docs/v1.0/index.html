@@ -392,16 +392,16 @@
             /* 占位 - 待实现 */
         }
 
-        /* 粒子背景 Canvas */
-        #particleCanvas {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: -1;
-        }
+        /* 粒子画布 */
+#particleCanvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+}
     </style>
 </head>
 <body>
@@ -551,6 +551,113 @@
             grid.appendChild(card);
         });
     }
+
+    // 粒子背景动画
+    class ParticleBackground {
+        constructor(canvas) {
+            this.canvas = canvas;
+            this.ctx = canvas.getContext('2d');
+            this.particles = [];
+            this.mouse = { x: null, y: null, radius: 150 };
+
+            this.resize();
+            this.init();
+            this.animate();
+
+            window.addEventListener('resize', () => this.resize());
+            window.addEventListener('mousemove', (e) => {
+                this.mouse.x = e.x;
+                this.mouse.y = e.y;
+            });
+            window.addEventListener('mouseout', () => {
+                this.mouse.x = null;
+                this.mouse.y = null;
+            });
+        }
+
+        resize() {
+            this.canvas.width = window.innerWidth;
+            this.canvas.height = window.innerHeight;
+        }
+
+        init() {
+            const isMobile = window.innerWidth < 768;
+            const count = isMobile ? 20 : 50;
+
+            this.particles = [];
+            for (let i = 0; i < count; i++) {
+                this.particles.push({
+                    x: Math.random() * this.canvas.width,
+                    y: Math.random() * this.canvas.height,
+                    size: Math.random() * 2 + 0.5,
+                    speedX: (Math.random() - 0.5) * 0.5,
+                    speedY: (Math.random() - 0.5) * 0.5,
+                    opacity: Math.random() * 0.3 + 0.1,
+                    color: Math.random() > 0.5 ? '#3bf4fb' : '#a855f7'
+                });
+            }
+        }
+
+        drawParticle(p) {
+            this.ctx.beginPath();
+            this.ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+            this.ctx.fillStyle = p.color;
+            this.ctx.globalAlpha = p.opacity;
+            this.ctx.fill();
+            this.ctx.globalAlpha = 1;
+        }
+
+        drawLines() {
+            for (let i = 0; i < this.particles.length; i++) {
+                for (let j = i + 1; j < this.particles.length; j++) {
+                    const dx = this.particles[i].x - this.particles[j].x;
+                    const dy = this.particles[i].y - this.particles[j].y;
+                    const dist = dx * dx + dy * dy;
+
+                    if (dist < 150 * 150) {
+                        this.ctx.beginPath();
+                        this.ctx.moveTo(this.particles[i].x, this.particles[i].y);
+                        this.ctx.lineTo(this.particles[j].x, this.particles[j].y);
+                        this.ctx.strokeStyle = '#3bf4fb';
+                        this.ctx.globalAlpha = 0.03 * (1 - dist / (150 * 150));
+                        this.ctx.stroke();
+                        this.ctx.globalAlpha = 1;
+                    }
+                }
+            }
+        }
+
+        update() {
+            this.particles.forEach(p => {
+                p.x += p.speedX;
+                p.y += p.speedY;
+
+                if (p.x < 0 || p.x > this.canvas.width) p.speedX *= -1;
+                if (p.y < 0 || p.y > this.canvas.height) p.speedY *= -1;
+
+                // 鼠标排斥
+                if (this.mouse.x && this.mouse.y) {
+                    const dx = p.x - this.mouse.x;
+                    const dy = p.y - this.mouse.y;
+                    const dist = dx * dx + dy * dy;
+                    if (dist < this.mouse.radius * this.mouse.radius) {
+                        p.x += dx * 0.02;
+                        p.y += dy * 0.02;
+                    }
+                }
+            });
+        }
+
+        animate() {
+            this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+
+            this.particles.forEach(p => this.drawParticle(p));
+            this.drawLines();
+            this.update();
+
+            requestAnimationFrame(() => this.animate());
+        }
+    }
     </script>
 
     <!-- 导航栏交互 -->
@@ -580,6 +687,12 @@
 
         // 渲染项目卡片
         renderProjectCards();
+
+        // 初始化粒子背景
+        const canvas = document.getElementById('particleCanvas');
+        if (canvas) {
+            new ParticleBackground(canvas);
+        }
     });
     </script>
 </body>
