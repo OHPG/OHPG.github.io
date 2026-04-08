@@ -915,6 +915,14 @@
         if (canvas) {
             new ParticleBackground(canvas);
         }
+
+        // AOS 动画初始化
+        AOS.init({
+            duration: 600,
+            easing: 'ease-out',
+            once: true,
+            offset: 50
+        });
     });
     </script>
 </body>
