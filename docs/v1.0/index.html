@@ -225,7 +225,70 @@
 
         /* Hero 区域 */
         .hero {
-            /* 占位 - 待实现 */
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            padding: var(--space-3xl) var(--space-md);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-title {
+            font-size: clamp(3rem, 10vw, 6rem);
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+            margin-bottom: var(--space-md);
+        }
+
+        .title-main {
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.25rem, 3vw, 1.75rem);
+            color: var(--text-secondary);
+            margin-bottom: var(--space-sm);
+        }
+
+        .hero-subtitle .separator {
+            margin: 0 var(--space-xs);
+            opacity: 0.5;
+        }
+
+        .hero-desc {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            opacity: 0.7;
+        }
+
+        /* 滚动指示器 */
+        .scroll-indicator {
+            position: absolute;
+            bottom: var(--space-xl);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: var(--space-xs);
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+            opacity: 0.6;
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(8px); }
         }
 
         /* 项目卡片区域 */
@@ -290,7 +353,21 @@
 
     <!-- Hero 区域 -->
     <header class="hero">
-        <!-- 占位 - 待实现 -->
+        <div class="hero-content container">
+            <h1 class="hero-title" data-aos="fade-up">
+                <span class="title-main">OHPG</span>
+            </h1>
+            <p class="hero-subtitle" data-aos="fade-up" data-aos-delay="100">
+                创新技术 <span class="separator">·</span> 优质体验
+            </p>
+            <p class="hero-desc" data-aos="fade-up" data-aos-delay="200">
+                四个 HarmonyOS 应用，与 Jellyfin 完美配合
+            </p>
+        </div>
+        <div class="scroll-indicator" data-aos="fade-up" data-aos-delay="400">
+            <span>向下滚动</span>
+            <i class="ri-arrow-down-line"></i>
+        </div>
     </header>
 
     <!-- 项目卡片区域 -->
