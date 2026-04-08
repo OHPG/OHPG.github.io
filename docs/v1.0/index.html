@@ -87,7 +87,140 @@
         /* ==================== 页面骨架占位符 ==================== */
         /* 导航栏 */
         .navbar {
-            /* 占位 - 待实现 */
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: var(--space-sm) 0;
+            background: rgba(10, 14, 23, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-subtle);
+            transition: background var(--duration-fast) ease;
+        }
+
+        .navbar-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: var(--space-lg);
+        }
+
+        .nav-links a {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            transition: color var(--duration-fast) ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-cyan);
+        }
+
+        .github-link {
+            display: flex;
+            align-items: center;
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+            transition: color var(--duration-fast) ease;
+        }
+
+        .github-link:hover {
+            color: var(--accent-cyan);
+        }
+
+        /* Hamburger 按钮 */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--text-primary);
+            transition: transform var(--duration-fast) ease, opacity var(--duration-fast) ease;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: translateY(7px) rotate(45deg);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: translateY(-7px) rotate(-45deg);
+        }
+
+        /* 移动端菜单 */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 999;
+            background: var(--bg-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity var(--duration-normal) ease, visibility var(--duration-normal) ease;
+        }
+
+        .mobile-menu.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .mobile-nav-links {
+            list-style: none;
+            text-align: center;
+        }
+
+        .mobile-nav-links li {
+            margin: var(--space-md) 0;
+        }
+
+        .mobile-nav-links a {
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        /* 响应式 */
+        @media (max-width: 768px) {
+            .nav-links,
+            .github-link {
+                display: none;
+            }
+
+            .hamburger {
+                display: flex;
+            }
         }
 
         /* Hero 区域 */
@@ -123,9 +256,36 @@
     </style>
 </head>
 <body>
+    <!-- 移动端菜单 Overlay -->
+    <div class="mobile-menu">
+        <ul class="mobile-nav-links">
+            <li><a href="#FinVideo">FinVideo</a></li>
+            <li><a href="#FinMusic">FinMusic</a></li>
+            <li><a href="#FinBook">FinBook</a></li>
+            <li><a href="#FinAdmin">FinAdmin</a></li>
+            <li><a href="https://github.com/OHPG" target="_blank">GitHub</a></li>
+        </ul>
+    </div>
+
     <!-- 导航栏 -->
     <nav class="navbar">
-        <!-- 占位 - 待实现 -->
+        <div class="container navbar-inner">
+            <a href="#" class="logo">OHPG</a>
+            <ul class="nav-links">
+                <li><a href="#FinVideo">FinVideo</a></li>
+                <li><a href="#FinMusic">FinMusic</a></li>
+                <li><a href="#FinBook">FinBook</a></li>
+                <li><a href="#FinAdmin">FinAdmin</a></li>
+            </ul>
+            <a href="https://github.com/OHPG" target="_blank" class="github-link">
+                <i class="ri-github-fill"></i>
+            </a>
+            <button class="hamburger" aria-label="菜单">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
     </nav>
 
     <!-- Hero 区域 -->
@@ -153,5 +313,32 @@
 
     <!-- AOS 脚本 -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <!-- 导航栏交互 -->
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const hamburger = document.querySelector('.hamburger');
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const mobileNavLinks = document.querySelectorAll('.mobile-nav-links a');
+
+        if (hamburger && mobileMenu) {
+            // Hamburger 切换
+            hamburger.addEventListener('click', () => {
+                hamburger.classList.toggle('active');
+                mobileMenu.classList.toggle('active');
+                document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+            });
+
+            // 点击链接关闭菜单
+            mobileNavLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    hamburger.classList.remove('active');
+                    mobileMenu.classList.remove('active');
+                    document.body.style.overflow = '';
+                });
+            });
+        }
+    });
+    </script>
 </body>
 </html>
