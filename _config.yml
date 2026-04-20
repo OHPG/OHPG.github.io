@@ -13,6 +13,8 @@ github_username: OHPG
 # 启用 Sass 处理
 sass:
   style: compressed
+  sourcemap: always
+  saas_dir: _saas
 
 # 禁用默认社交链接
 minima:
@@ -28,4 +30,4 @@ show_excerpts: false
 hide_title: true
 
 # 使用自定义布局
-layouts_dir: _layouts
+# layouts_dir: _layouts
